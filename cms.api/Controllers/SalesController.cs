@@ -65,6 +65,11 @@ namespace cms.api.Controllers
                                 intsales.CMSSALTYPE = saldata.transtype;
                                 intsales.CMSSALTRNDATE = saldata.transdate;
 
+                                //Update GAGAN
+                                intsales.CMSDISCOUNT = saldata.transdiscount;
+                                intsales.CMSFINALPRICE = saldata.transfinalPrice;
+
+
                                 db.KDSCMSSALES_INT.Add(intsales);
 
                                 counter++;

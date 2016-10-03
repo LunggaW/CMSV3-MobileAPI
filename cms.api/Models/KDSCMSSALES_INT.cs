@@ -29,5 +29,7 @@ namespace cms.api.Models
         public decimal CMSSALSEQ { get; set; }
         public decimal CMSSALTYPE { get; set; }
         public System.DateTime CMSSALTRNDATE { get; set; }
+        public Nullable<int> CMSDISCOUNT { get; set; }
+        public Nullable<decimal> CMSFINALPRICE { get; set; }
     }
 }

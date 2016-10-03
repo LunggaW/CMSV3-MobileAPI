@@ -82,6 +82,8 @@
           <Property Name="CMSSALSEQ" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CMSSALTYPE" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CMSSALTRNDATE" Type="date" Nullable="false" />
+          <Property Name="CMSDISCOUNT" Type="number" Precision="10" Scale="0" />
+          <Property Name="CMSFINALPRICE" Type="number" Precision="18" Scale="3" />
         </EntityType>
         <EntityType Name="KDSCMSSITE">
           <Key>
@@ -279,7 +281,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="KDSCMSMSTBRND" EntityType="Self.KDSCMSMSTBRND" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSPARDTABLE" EntityType="Self.KDSCMSPARDTABLE" Schema="CMS" store:Type="Tables" />
@@ -651,6 +652,8 @@
           <Property Name="CMSSALSEQ" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
           <Property Name="CMSSALTYPE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
           <Property Name="CMSSALTRNDATE" Type="DateTime" Nullable="false" />
+          <Property Name="CMSDISCOUNT" Type="Int32" />
+          <Property Name="CMSFINALPRICE" Type="Decimal" Precision="18" Scale="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -831,6 +834,8 @@
           <EntitySetMapping Name="KDSCMSSALES_INT">
             <EntityTypeMapping TypeName="Model.KDSCMSSALES_INT">
               <MappingFragment StoreEntitySet="KDSCMSSALES_INT">
+                <ScalarProperty Name="CMSFINALPRICE" ColumnName="CMSFINALPRICE" />
+                <ScalarProperty Name="CMSDISCOUNT" ColumnName="CMSDISCOUNT" />
                 <ScalarProperty Name="CMSSALTRNDATE" ColumnName="CMSSALTRNDATE" />
                 <ScalarProperty Name="CMSSALTYPE" ColumnName="CMSSALTYPE" />
                 <ScalarProperty Name="CMSSALSEQ" ColumnName="CMSSALSEQ" />
