@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5fa8672116a84314bee767691773dbb8" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.KDSCMSMSTBRND" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KDSCMSPROFSITELINK" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KDSCMSSITE" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KDSCMSSITEPROF" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KDSCMSSKUD" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KDSCMSSKUH" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KDSCMSSKULINK" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KDSCMSUSER" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <AssociationConnector Association="Model.SYS_C007486" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007475" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007480" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007478" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007474" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007472" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C007471" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.KDSCMSPARDTABLE" Width="1.5" PointX="7.875" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.KDSCMSSALES_INT" Width="1.75" PointX="8.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
