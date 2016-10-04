@@ -24,6 +24,6 @@ namespace cms.api.JsonModels
 
         //Update GAGAN
         public int transdiscount { set; get; }
-        public decimal transfinalPrice { set; get; }
+        public decimal transfinalprice { set; get; }
     }
 }

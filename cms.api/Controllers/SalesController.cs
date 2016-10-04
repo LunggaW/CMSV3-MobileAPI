@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -50,7 +51,12 @@ namespace cms.api.Controllers
 
                                 KDSCMSSALES_INT intsales = new KDSCMSSALES_INT();
 
-                                intsales.CMSSALNOTA = saldata.transnota;
+
+                                //update GAGAN
+                                intsales.CMSSALNOTA = "MBL";
+
+
+                                //intsales.CMSSALNOTA = saldata.transnota;
                                 intsales.CMSSALBRCD = saldata.transbrcd;
                                 intsales.CMSSALQTY = saldata.transqty;
                                 intsales.CMSSALSKU = saldata.transsku;
@@ -67,7 +73,7 @@ namespace cms.api.Controllers
 
                                 //Update GAGAN
                                 intsales.CMSDISCOUNT = saldata.transdiscount;
-                                intsales.CMSFINALPRICE = saldata.transfinalPrice;
+                                intsales.CMSFINALPRICE = saldata.transfinalprice;
 
 
                                 db.KDSCMSSALES_INT.Add(intsales);
@@ -94,14 +100,29 @@ namespace cms.api.Controllers
                             return BadRequest();
                         }
                     }
+                    
+                    catch (DbEntityValidationException e)
+                    {
+                        foreach (var eve in e.EntityValidationErrors)
+                        {
+                            logger.Error("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                logger.Error("- Property: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+                        throw;
+                    }
                     catch (Exception ex)
                     {
-                        logger.Error("Error Message"+ ex.Message);
+                        logger.Error("Error Message" + ex.Message);
                         logger.Error("Inner Exception" + ex.InnerException);
                         return BadRequest();
                     }
 
-                    
+
                 }
                 else
                 {

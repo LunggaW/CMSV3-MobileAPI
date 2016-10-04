@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using cms.api.Models;
 using cms.api.ViewModels;
+using NLog;
 
 namespace cms.api.Controllers
 {
@@ -18,22 +19,34 @@ namespace cms.api.Controllers
     public class SitesController : ApiController
     {
         private CMSContext db = new CMSContext();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         [Route("")]
         [HttpGet]
         public IEnumerable<SiteViewModel> GetSites()
         {
-            IEnumerable<SiteViewModel> sites = from site in db.KDSCMSSITE
-                                               select new SiteViewModel
-                                               {
-                                                    siteid = site.SITESITE,
-                                                    siteclass = site.SITESCLAS,
-                                                    sitename = site.SITESITENAME,
-                                                    siteflag = site.SITESITEFLAG,
-                                                    sitestatus = site.SITESITESTATUS
-                                               }
+
+            try
+            {
+                IEnumerable<SiteViewModel> sites = from site in db.KDSCMSSITE
+                                                   select new SiteViewModel
+                                                   {
+                                                       siteid = site.SITESITE,
+                                                       siteclass = site.SITESCLAS,
+                                                       sitename = site.SITESITENAME,
+                                                       siteflag = site.SITESITEFLAG,
+                                                       sitestatus = site.SITESITESTATUS
+                                                   }
             ;
-            return sites;
+                return sites;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error Message" + ex.Message);
+                logger.Error("Inner Exception" + ex.InnerException);
+                throw;
+            }
+            
         }
 
         [Route("profile/{id}")]

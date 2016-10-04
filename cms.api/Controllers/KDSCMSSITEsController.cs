@@ -9,12 +9,14 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using cms.api.Models;
+using NLog;
 
 namespace cms.api.Controllers
 {
     public class KDSCMSSITEsController : ApiController
     {
         private CMSContext db = new CMSContext();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         // GET: api/KDSCMSSITEs
         public IQueryable<KDSCMSSITE> GetKDSCMSSITE()
