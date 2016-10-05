@@ -283,7 +283,9 @@
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <EntityDeploy Include="Models\CMSModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CMSModels.Designer.cs</LastGenOutput>
@@ -300,7 +302,7 @@
     <None Include="Properties\PublishProfiles\cms.pubxml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\PublishProfiles\cms2.pubxml">
+    <None Include="Properties\PublishProfiles\cms-lungga.pubxml">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">

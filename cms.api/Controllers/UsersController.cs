@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -208,6 +209,47 @@ namespace cms.api.Controllers
                 throw;
             }
             
+        }
+
+        [Route("changepassword")]
+        [HttpPost]
+        public IHttpActionResult ChangePassword([FromBody]JObject data)
+        {
+            try
+            {
+                string userid = data["userid"].ToString();
+                logger.Debug("User ID = "+ userid);
+                string password = data["password"].ToString();
+                logger.Debug("Password  = " + password);
+
+                if (!string.IsNullOrWhiteSpace(userid))
+                {
+                    KDSCMSUSER KDSCMSUSER = db.KDSCMSUSER.Find(userid);
+                    if (KDSCMSUSER != null)
+                    {
+                        
+                        KDSCMSUSER.USERPASW = password;
+                        db.SaveChanges();
+
+                        return Ok("ok");
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error Message" + ex.Message);
+                logger.Error("Inner Exception" + ex.InnerException);
+                throw;
+            }
+
         }
 
         [Route("{id}")]
