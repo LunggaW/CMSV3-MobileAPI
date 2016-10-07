@@ -31,5 +31,6 @@ namespace cms.api.Models
         public System.DateTime CMSSALTRNDATE { get; set; }
         public Nullable<int> CMSDISCOUNT { get; set; }
         public Nullable<decimal> CMSFINALPRICE { get; set; }
+        public Nullable<decimal> CMSNORMALPRICE { get; set; }
     }
 }

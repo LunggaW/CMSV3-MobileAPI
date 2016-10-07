@@ -84,6 +84,7 @@
           <Property Name="CMSSALTRNDATE" Type="date" Nullable="false" />
           <Property Name="CMSDISCOUNT" Type="number" Precision="10" Scale="0" />
           <Property Name="CMSFINALPRICE" Type="number" Precision="18" Scale="3" />
+          <Property Name="CMSNORMALPRICE" Type="number" Precision="18" Scale="3" />
         </EntityType>
         <EntityType Name="KDSCMSSITE">
           <Key>
@@ -654,6 +655,7 @@
           <Property Name="CMSSALTRNDATE" Type="DateTime" Nullable="false" />
           <Property Name="CMSDISCOUNT" Type="Int32" />
           <Property Name="CMSFINALPRICE" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CMSNORMALPRICE" Type="Decimal" Precision="18" Scale="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -834,6 +836,7 @@
           <EntitySetMapping Name="KDSCMSSALES_INT">
             <EntityTypeMapping TypeName="Model.KDSCMSSALES_INT">
               <MappingFragment StoreEntitySet="KDSCMSSALES_INT">
+                <ScalarProperty Name="CMSNORMALPRICE" ColumnName="CMSNORMALPRICE" />
                 <ScalarProperty Name="CMSFINALPRICE" ColumnName="CMSFINALPRICE" />
                 <ScalarProperty Name="CMSDISCOUNT" ColumnName="CMSDISCOUNT" />
                 <ScalarProperty Name="CMSSALTRNDATE" ColumnName="CMSSALTRNDATE" />

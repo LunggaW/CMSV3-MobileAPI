@@ -74,6 +74,7 @@ namespace cms.api.Controllers
                                 //Update GAGAN
                                 intsales.CMSDISCOUNT = saldata.transdiscount;
                                 intsales.CMSFINALPRICE = saldata.transfinalprice;
+                                intsales.CMSNORMALPRICE = saldata.transprice;
 
 
                                 db.KDSCMSSALES_INT.Add(intsales);
