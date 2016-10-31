@@ -190,6 +190,9 @@ namespace cms.api.Controllers
                         juser.userenddate = KDSCMSUSER.USEREDAT;
                         juser.SiteProfile = siteprof;
 
+                        //add IMEI
+                        juser.IMEI = KDSCMSUSER.USERIMEI;
+
                         return Ok(juser);
                     }
                     else
@@ -209,6 +212,91 @@ namespace cms.api.Controllers
                 throw;
             }
             
+        }
+
+        [Route("getimei")]
+        [HttpPost]
+        public IHttpActionResult GetImei([FromBody]JObject data)
+        {
+            try
+            {
+                string userid = data["userid"].ToString();
+
+                if (!string.IsNullOrWhiteSpace(userid))
+                {
+                    KDSCMSUSER KDSCMSUSER = db.KDSCMSUSER.Find(userid);
+                    if (KDSCMSUSER != null)
+                    {
+                        //add IMEI
+                        string Imei = KDSCMSUSER.USERIMEI;
+
+                        return Ok(Imei);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error Message" + ex.Message);
+                logger.Error("Inner Exception" + ex.InnerException);
+                throw;
+            }
+
+        }
+
+        [Route("getuser")]
+        [HttpPost]
+        public IHttpActionResult GetUser([FromBody]JObject data)
+        {
+            try
+            {
+                string userid = data["userid"].ToString();
+
+                if (!string.IsNullOrWhiteSpace(userid))
+                {
+                    KDSCMSUSER KDSCMSUSER = db.KDSCMSUSER.Find(userid);
+                    if (KDSCMSUSER != null)
+                    {
+                        //add IMEI
+                        JUser juser = new JUser();
+                        juser.userid = KDSCMSUSER.USERUSID;
+                        juser.username = KDSCMSUSER.USERUSNM;
+                        juser.userdesc = KDSCMSUSER.USERUSDSC;
+                        juser.usertype = KDSCMSUSER.USERTYPE;
+                        juser.userstatus = KDSCMSUSER.USERSTAT;
+                        juser.useraccprofile = KDSCMSUSER.USERACPROF;
+                        juser.usermenuprofile = KDSCMSUSER.USERMEPROF;
+                        juser.siteprofid = KDSCMSUSER.USERSTPROF;
+                        juser.userstartdate = KDSCMSUSER.USERSDAT;
+                        juser.userenddate = KDSCMSUSER.USEREDAT;
+
+
+                        return Ok(juser);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error Message" + ex.Message);
+                logger.Error("Inner Exception" + ex.InnerException);
+                throw;
+            }
+
         }
 
         [Route("changepassword")]

@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Web;
 using cms.api.Models;
 using System.Data.Entity;
+using NLog;
 
 namespace cms.api.Providers
 {
     public class CustomOAuthProvider : OAuthAuthorizationServerProvider
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private CMSContext db = new CMSContext();
         
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
@@ -23,6 +25,9 @@ namespace cms.api.Providers
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             bool isValidUser = false;
+
+            logger.Debug("GrantResourceOwnerCredentials Username" + context.UserName);
+            logger.Debug("GrantResourceOwnerCredentials Username" + context.UserName);
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
@@ -56,6 +61,8 @@ namespace cms.api.Providers
         {
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
             {
+                logger.Debug("TokenEndpoint Key" + property.Key);
+                logger.Debug("TokenEndpoint Value" + property.Value);
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
 

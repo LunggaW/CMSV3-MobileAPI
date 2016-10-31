@@ -15,6 +15,7 @@ namespace cms.api.JsonModels
         public DateTime userstartdate { set; get; }
         public DateTime userenddate { set; get; }
         public string siteprofid { set; get; }
+        public string IMEI { set; get; }
         public string useraccprofile { set; get; }
         public string usermenuprofile { set; get; }
         public JSiteProfile SiteProfile { set; get; }
