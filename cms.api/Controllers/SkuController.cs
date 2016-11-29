@@ -8,6 +8,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.UI;
+using cms.api.JsonModels;
 using cms.api.Models;
 using cms.api.ViewModels;
 using Newtonsoft.Json.Linq;
@@ -41,13 +43,13 @@ namespace cms.api.Controllers
            ;
                 return headers;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 logger.Error("Error Message" + ex.Message);
                 logger.Error("Inner Exception" + ex.InnerException);
                 throw;
             }
-           
+
         }
 
         [Route("site")]
@@ -89,7 +91,7 @@ namespace cms.api.Controllers
                 logger.Error("Inner Exception" + ex.InnerException);
                 throw;
             }
-           
+
         }
 
         [Route("{id}")]
@@ -119,7 +121,7 @@ namespace cms.api.Controllers
                 logger.Error("Inner Exception" + ex.InnerException);
                 throw;
             }
-            
+
         }
 
         [Route("{id}/details")]
@@ -151,7 +153,7 @@ namespace cms.api.Controllers
                 logger.Error("Inner Exception" + ex.InnerException);
                 throw;
             }
-           
+
         }
 
         [Route("{id}/details/{detid}")]
@@ -183,7 +185,98 @@ namespace cms.api.Controllers
                 logger.Error("Inner Exception" + ex.InnerException);
                 throw;
             }
-            
+
         }
+
+
+        [Route("getskulists")]
+        [HttpPost]
+        public IHttpActionResult GetSkuLists([FromBody]JObject data)
+        {
+            logger.Debug("GetSkuLists function in SkuController");
+            try
+            {
+                string barcode = data["barcode"].ToString();
+                string site = data["site"].ToString();
+
+                logger.Debug("barcode : " + barcode);
+                logger.Debug("site : " + site);
+
+                if (!string.IsNullOrWhiteSpace(barcode) && !string.IsNullOrWhiteSpace(site))
+                {
+                    JSkuList list = new JSkuList();
+                    List<JSkuList> jskulists = new List<JSkuList>();
+
+                    using (var ctx = new CMSContext())
+                    {
+                        var lists =
+                            ctx.KDSCMSSKUH.SqlQuery("select * " +
+                                                    "from KDSCMSSKUH  where SKUHEDAT >= CURRENT_DATE " +
+                                                    "AND SKUHSKUID IN " +
+                                                    "(select distinct SKULINKSKUID " +
+                                                    "from KDSCMSSKULINK, KDSCMSMSTITEM " +
+                                                    "WHERE SKULINKSITEID = '"+site+"' " +
+                                                    "and SKULINKBRNDID = ITEMBRNDID " +
+                                                    "and KDSCMSMSTITEM.ITEMITEMID = " +
+                                                    "  (SELECT BRCDITEMID FROM KDSCMSMSTBRCD, KDSCMSSASS " +
+                                                    "    WHERE  SASSITEMID = BRCDITEMID " +
+                                                    "     AND SASSVRNT = BRCDVRNTID " +
+                                                    "     AND BRCDBRCDID = '"+barcode+"' " +
+                                                    "     AND SASSSITEID = KDSCMSSKULINK.SKULINKSITEID))").ToList<KDSCMSSKUH>();
+                        logger.Debug("masuk");
+
+                        foreach (KDSCMSSKUH skuLists in lists)
+                        {
+                            logger.Error("Sku ID : " + skuLists.SKUHSKUID);
+                            logger.Error("Sku Desc : " + skuLists.SKUHSDES);
+                            list = new JSkuList { skuid = skuLists.SKUHSKUID, skuDesc = skuLists.SKUHSDES };
+
+                            jskulists.Add(list);
+                        }
+
+                        JSkuLists skuLists2 = new JSkuLists();
+
+                        skuLists2.SkuList = jskulists;
+
+                        return Ok(skuLists2);
+
+                    }
+
+                    
+
+                    //IEnumerable<KDSCMSSKUH> tests = db.KDSCMSSKUH.Where(skuHeader => (from skuLink in db.KDSCMSSKULINK
+                    //                                                                  join itemLists in db.KDSCMSMSTITEM
+                    //                                                                      on skuLink.SKULINKBRNDID equals itemLists.ITEMBRNDID
+                    //                                                                  where skuLink.SKULINKSITEID == site
+                    //                                                                        &&
+                    //                                                                        (from brcd in db.KDSCMSMSTBRCD
+                    //                                                                         join assortment in db.KDSCMSSASS
+                    //               on brcd.BRCDITEMID equals assortment.SASSITEMID
+                    //                                                                         where assortment.SASSVRNT == brcd.BRCDVRNTID.ToString()
+                    //                 && brcd.BRCDBRCDID == barcode
+                    //                 && assortment.SASSSITEID == skuLink.SKULINKSITEID
+                    //                                                                         select brcd.BRCDITEMID)
+                    //                                                                            .Contains(itemLists.ITEMITEMID)
+                    //                                                                  select skuLink.SKULINKSKUID)
+                    //    .Contains(skuHeader.SKUHSKUID));
+
+                   
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error Message" + ex.Message);
+                logger.Error("Inner Exception" + ex.InnerException);
+                throw;
+            }
+
+        }
+
+
+
     }
 }

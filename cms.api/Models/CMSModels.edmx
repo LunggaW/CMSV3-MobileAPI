@@ -5,6 +5,26 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="KDSCMSMSTBRCD">
+          <Key>
+            <PropertyRef Name="BRCDBRCDID" />
+            <PropertyRef Name="BRCDITEMID" />
+            <PropertyRef Name="BRCDVRNTID" />
+          </Key>
+          <Property Name="BRCDBRCDID" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="BRCDITEMID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BRCDVRNTID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="BRCDTYPE" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="BRCDSTAT" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="BRCDSDAT" Type="date" Nullable="false" />
+          <Property Name="BRCDEDAT" Type="date" Nullable="false" />
+          <Property Name="BRCDINTF" Type="number" Precision="1" Scale="0" />
+          <Property Name="BRCDCDAT" Type="date" Nullable="false" />
+          <Property Name="BRCDMDAT" Type="date" Nullable="false" />
+          <Property Name="BRCDCRBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="BRCDMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="BRCDNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="KDSCMSMSTBRND">
           <Key>
             <PropertyRef Name="BRNDBRNDID" />
@@ -17,6 +37,23 @@
           <Property Name="BRNDCRBY" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="BRNDMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="BRNDNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KDSCMSMSTITEM">
+          <Key>
+            <PropertyRef Name="ITEMITEMID" />
+          </Key>
+          <Property Name="ITEMITEMID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ITEMITEMIDX" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="ITEMTYPE" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ITEMSDESC" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="ITEMLDESC" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ITEMBRNDID" Type="varchar2" MaxLength="3" Nullable="false" />
+          <Property Name="ITEMINTF" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ITEMCDAT" Type="date" Nullable="false" />
+          <Property Name="ITEMMDAT" Type="date" Nullable="false" />
+          <Property Name="ITEMCRBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="ITEMMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="ITEMNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="KDSCMSPARDTABLE">
           <Key>
@@ -85,6 +122,23 @@
           <Property Name="CMSDISCOUNT" Type="number" Precision="10" Scale="0" />
           <Property Name="CMSFINALPRICE" Type="number" Precision="18" Scale="3" />
           <Property Name="CMSNORMALPRICE" Type="number" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="KDSCMSSASS">
+          <Key>
+            <PropertyRef Name="SASSITEMID" />
+            <PropertyRef Name="SASSSITEID" />
+            <PropertyRef Name="SASSVRNT" />
+          </Key>
+          <Property Name="SASSITEMID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SASSSITEID" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SASSVRNT" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SASSSTAT" Type="number" Precision="2" Scale="0" />
+          <Property Name="SASSINTF" Type="number" Precision="1" Scale="0" />
+          <Property Name="SASSCDAT" Type="date" />
+          <Property Name="SASSMDAT" Type="date" />
+          <Property Name="SASSCRBY" Type="varchar2" MaxLength="20" />
+          <Property Name="SASSMOBY" Type="varchar2" MaxLength="20" />
+          <Property Name="SASSNMOD" Type="number" Precision="12" Scale="0" />
         </EntityType>
         <EntityType Name="KDSCMSSITE">
           <Key>
@@ -174,6 +228,26 @@
           <Property Name="SKULINKMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="SKULINKNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="KDSCMSSPRICE">
+          <Key>
+            <PropertyRef Name="SPRCITEMID" />
+            <PropertyRef Name="SPRCVRNTID" />
+            <PropertyRef Name="SPRCSITE" />
+          </Key>
+          <Property Name="SPRCITEMID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SPRCVRNTID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SPRCSITE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SPRCPRICE" Type="number" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="SPRCVAT" Type="number" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="SPRCSDAT" Type="date" Nullable="false" />
+          <Property Name="SPRCEDAT" Type="date" Nullable="false" />
+          <Property Name="SPRCINTF" Type="number" Precision="1" Scale="0" />
+          <Property Name="SPRCCDAT" Type="date" Nullable="false" />
+          <Property Name="SPRCMDAT" Type="date" Nullable="false" />
+          <Property Name="SPRCCRBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SPRCMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SPRCNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="KDSCMSUSER">
           <Key>
             <PropertyRef Name="USERUSID" />
@@ -198,7 +272,19 @@
           <Property Name="USERNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
           <Property Name="USERTOKEN" Type="varchar2" MaxLength="100" />
         </EntityType>
-        <Association Name="SYS_C007471">
+        <Association Name="KDSCMSMSTITEM_FK1">
+          <End Role="KDSCMSMSTBRND" Type="Self.KDSCMSMSTBRND" Multiplicity="1" />
+          <End Role="KDSCMSMSTITEM" Type="Self.KDSCMSMSTITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTBRND">
+              <PropertyRef Name="BRNDBRNDID" />
+            </Principal>
+            <Dependent Role="KDSCMSMSTITEM">
+              <PropertyRef Name="ITEMBRNDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0011669">
           <End Role="KDSCMSSKUH" Type="Self.KDSCMSSKUH" Multiplicity="1" />
           <End Role="KDSCMSSKULINK" Type="Self.KDSCMSSKULINK" Multiplicity="*" />
           <ReferentialConstraint>
@@ -210,7 +296,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SYS_C007472">
+        <Association Name="SYS_C0011670">
           <End Role="KDSCMSSKUH" Type="Self.KDSCMSSKUH" Multiplicity="1" />
           <End Role="KDSCMSSKUD" Type="Self.KDSCMSSKUD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -222,7 +308,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SYS_C007474">
+        <Association Name="SYS_C0011672">
           <End Role="KDSCMSSITEPROF" Type="Self.KDSCMSSITEPROF" Multiplicity="1" />
           <End Role="KDSCMSUSER" Type="Self.KDSCMSUSER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -234,7 +320,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SYS_C007475">
+        <Association Name="SYS_C0011673">
           <End Role="KDSCMSSITEPROF" Type="Self.KDSCMSSITEPROF" Multiplicity="1" />
           <End Role="KDSCMSPROFSITELINK" Type="Self.KDSCMSPROFSITELINK" Multiplicity="*" />
           <ReferentialConstraint>
@@ -246,7 +332,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SYS_C007478">
+        <Association Name="SYS_C0011674">
+          <End Role="KDSCMSSITE" Type="Self.KDSCMSSITE" Multiplicity="1" />
+          <End Role="KDSCMSSPRICE" Type="Self.KDSCMSSPRICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSSITE">
+              <PropertyRef Name="SITESITE" />
+            </Principal>
+            <Dependent Role="KDSCMSSPRICE">
+              <PropertyRef Name="SPRCSITE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0011676">
           <End Role="KDSCMSSITE" Type="Self.KDSCMSSITE" Multiplicity="1" />
           <End Role="KDSCMSSKULINK" Type="Self.KDSCMSSKULINK" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +356,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SYS_C007480">
+        <Association Name="SYS_C0011678">
           <End Role="KDSCMSSITE" Type="Self.KDSCMSSITE" Multiplicity="1" />
           <End Role="KDSCMSPROFSITELINK" Type="Self.KDSCMSPROFSITELINK" Multiplicity="*" />
           <ReferentialConstraint>
@@ -270,7 +368,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SYS_C007486">
+        <Association Name="SYS_C0011683">
+          <End Role="KDSCMSMSTITEM" Type="Self.KDSCMSMSTITEM" Multiplicity="1" />
+          <End Role="KDSCMSMSTBRCD" Type="Self.KDSCMSMSTBRCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTITEM">
+              <PropertyRef Name="ITEMITEMID" />
+            </Principal>
+            <Dependent Role="KDSCMSMSTBRCD">
+              <PropertyRef Name="BRCDITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0011684">
           <End Role="KDSCMSMSTBRND" Type="Self.KDSCMSMSTBRND" Multiplicity="1" />
           <End Role="KDSCMSSKULINK" Type="Self.KDSCMSSKULINK" Multiplicity="*" />
           <ReferentialConstraint>
@@ -283,41 +393,57 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="KDSCMSMSTBRCD" EntityType="Self.KDSCMSMSTBRCD" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSMSTBRND" EntityType="Self.KDSCMSMSTBRND" Schema="CMS" store:Type="Tables" />
+          <EntitySet Name="KDSCMSMSTITEM" EntityType="Self.KDSCMSMSTITEM" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSPARDTABLE" EntityType="Self.KDSCMSPARDTABLE" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSPROFSITELINK" EntityType="Self.KDSCMSPROFSITELINK" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSALES_INT" EntityType="Self.KDSCMSSALES_INT" Schema="CMS" store:Type="Tables" />
+          <EntitySet Name="KDSCMSSASS" EntityType="Self.KDSCMSSASS" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSITE" EntityType="Self.KDSCMSSITE" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSITEPROF" EntityType="Self.KDSCMSSITEPROF" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSKUD" EntityType="Self.KDSCMSSKUD" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSKUH" EntityType="Self.KDSCMSSKUH" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSKULINK" EntityType="Self.KDSCMSSKULINK" Schema="CMS" store:Type="Tables" />
+          <EntitySet Name="KDSCMSSPRICE" EntityType="Self.KDSCMSSPRICE" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSUSER" EntityType="Self.KDSCMSUSER" Schema="CMS" store:Type="Tables" />
-          <AssociationSet Name="SYS_C007471" Association="Self.SYS_C007471">
+          <AssociationSet Name="KDSCMSMSTITEM_FK1" Association="Self.KDSCMSMSTITEM_FK1">
+            <End Role="KDSCMSMSTBRND" EntitySet="KDSCMSMSTBRND" />
+            <End Role="KDSCMSMSTITEM" EntitySet="KDSCMSMSTITEM" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0011669" Association="Self.SYS_C0011669">
             <End Role="KDSCMSSKUH" EntitySet="KDSCMSSKUH" />
             <End Role="KDSCMSSKULINK" EntitySet="KDSCMSSKULINK" />
           </AssociationSet>
-          <AssociationSet Name="SYS_C007472" Association="Self.SYS_C007472">
+          <AssociationSet Name="SYS_C0011670" Association="Self.SYS_C0011670">
             <End Role="KDSCMSSKUH" EntitySet="KDSCMSSKUH" />
             <End Role="KDSCMSSKUD" EntitySet="KDSCMSSKUD" />
           </AssociationSet>
-          <AssociationSet Name="SYS_C007474" Association="Self.SYS_C007474">
+          <AssociationSet Name="SYS_C0011672" Association="Self.SYS_C0011672">
             <End Role="KDSCMSSITEPROF" EntitySet="KDSCMSSITEPROF" />
             <End Role="KDSCMSUSER" EntitySet="KDSCMSUSER" />
           </AssociationSet>
-          <AssociationSet Name="SYS_C007475" Association="Self.SYS_C007475">
+          <AssociationSet Name="SYS_C0011673" Association="Self.SYS_C0011673">
             <End Role="KDSCMSSITEPROF" EntitySet="KDSCMSSITEPROF" />
             <End Role="KDSCMSPROFSITELINK" EntitySet="KDSCMSPROFSITELINK" />
           </AssociationSet>
-          <AssociationSet Name="SYS_C007478" Association="Self.SYS_C007478">
+          <AssociationSet Name="SYS_C0011674" Association="Self.SYS_C0011674">
+            <End Role="KDSCMSSITE" EntitySet="KDSCMSSITE" />
+            <End Role="KDSCMSSPRICE" EntitySet="KDSCMSSPRICE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0011676" Association="Self.SYS_C0011676">
             <End Role="KDSCMSSITE" EntitySet="KDSCMSSITE" />
             <End Role="KDSCMSSKULINK" EntitySet="KDSCMSSKULINK" />
           </AssociationSet>
-          <AssociationSet Name="SYS_C007480" Association="Self.SYS_C007480">
+          <AssociationSet Name="SYS_C0011678" Association="Self.SYS_C0011678">
             <End Role="KDSCMSSITE" EntitySet="KDSCMSSITE" />
             <End Role="KDSCMSPROFSITELINK" EntitySet="KDSCMSPROFSITELINK" />
           </AssociationSet>
-          <AssociationSet Name="SYS_C007486" Association="Self.SYS_C007486">
+          <AssociationSet Name="SYS_C0011683" Association="Self.SYS_C0011683">
+            <End Role="KDSCMSMSTITEM" EntitySet="KDSCMSMSTITEM" />
+            <End Role="KDSCMSMSTBRCD" EntitySet="KDSCMSMSTBRCD" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0011684" Association="Self.SYS_C0011684">
             <End Role="KDSCMSMSTBRND" EntitySet="KDSCMSMSTBRND" />
             <End Role="KDSCMSSKULINK" EntitySet="KDSCMSSKULINK" />
           </AssociationSet>
@@ -339,6 +465,7 @@
           <Property Name="BRNDMOBY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BRNDNMOD" Type="Int64" Nullable="false" />
           <NavigationProperty Name="KDSCMSSKULINK" Relationship="Self.SYS_C007486" FromRole="KDSCMSMSTBRND" ToRole="KDSCMSSKULINK" />
+          <NavigationProperty Name="KDSCMSMSTITEM" Relationship="Model.KDSCMSMSTITEM_FK1" FromRole="KDSCMSMSTBRND" ToRole="KDSCMSMSTITEM" />
         </EntityType>
         <EntityType Name="KDSCMSPROFSITELINK">
           <Key>
@@ -375,6 +502,7 @@
           <Property Name="SITESITESTATUS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="KDSCMSPROFSITELINK" Relationship="Self.SYS_C007480" FromRole="KDSCMSSITE" ToRole="KDSCMSPROFSITELINK" />
           <NavigationProperty Name="KDSCMSSKULINK" Relationship="Self.SYS_C007478" FromRole="KDSCMSSITE" ToRole="KDSCMSSKULINK" />
+          <NavigationProperty Name="KDSCMSSPRICE" Relationship="Model.SYS_C0011674" FromRole="KDSCMSSITE" ToRole="KDSCMSSPRICE" />
         </EntityType>
         <EntityType Name="KDSCMSSITEPROF">
           <Key>
@@ -604,6 +732,22 @@
           </AssociationSet>
           <EntitySet Name="KDSCMSPARDTABLE" EntityType="Model.KDSCMSPARDTABLE" />
           <EntitySet Name="KDSCMSSALES_INT" EntityType="Model.KDSCMSSALES_INT" />
+          <EntitySet Name="KDSCMSMSTBRCD" EntityType="Model.KDSCMSMSTBRCD" />
+          <EntitySet Name="KDSCMSSASS" EntityType="Model.KDSCMSSASS" />
+          <EntitySet Name="KDSCMSSPRICE" EntityType="Model.KDSCMSSPRICE" />
+          <AssociationSet Name="SYS_C0011674" Association="Model.SYS_C0011674">
+            <End Role="KDSCMSSITE" EntitySet="KDSCMSSITE" />
+            <End Role="KDSCMSSPRICE" EntitySet="KDSCMSSPRICE" />
+          </AssociationSet>
+          <EntitySet Name="KDSCMSMSTITEM" EntityType="Model.KDSCMSMSTITEM" />
+          <AssociationSet Name="SYS_C0011683" Association="Model.SYS_C0011683">
+            <End Role="KDSCMSMSTITEM" EntitySet="KDSCMSMSTITEM" />
+            <End Role="KDSCMSMSTBRCD" EntitySet="KDSCMSMSTBRCD" />
+          </AssociationSet>
+          <AssociationSet Name="KDSCMSMSTITEM_FK1" Association="Model.KDSCMSMSTITEM_FK1">
+            <End Role="KDSCMSMSTBRND" EntitySet="KDSCMSMSTBRND" />
+            <End Role="KDSCMSMSTITEM" EntitySet="KDSCMSMSTITEM" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="KDSCMSPARDTABLE">
           <Key>
@@ -657,6 +801,120 @@
           <Property Name="CMSFINALPRICE" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="CMSNORMALPRICE" Type="Decimal" Precision="18" Scale="3" />
         </EntityType>
+        <EntityType Name="KDSCMSMSTBRCD">
+          <Key>
+            <PropertyRef Name="BRCDBRCDID" />
+            <PropertyRef Name="BRCDITEMID" />
+            <PropertyRef Name="BRCDVRNTID" />
+          </Key>
+          <Property Name="BRCDBRCDID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BRCDITEMID" Type="Int32" Nullable="false" />
+          <Property Name="BRCDVRNTID" Type="Int32" Nullable="false" />
+          <Property Name="BRCDTYPE" Type="Int16" Nullable="false" />
+          <Property Name="BRCDSTAT" Type="Int16" Nullable="false" />
+          <Property Name="BRCDSDAT" Type="DateTime" Nullable="false" />
+          <Property Name="BRCDEDAT" Type="DateTime" Nullable="false" />
+          <Property Name="BRCDINTF" Type="Int16" />
+          <Property Name="BRCDCDAT" Type="DateTime" Nullable="false" />
+          <Property Name="BRCDMDAT" Type="DateTime" Nullable="false" />
+          <Property Name="BRCDCRBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BRCDMOBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BRCDNMOD" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="KDSCMSMSTITEM" Relationship="Model.SYS_C0011683" FromRole="KDSCMSMSTBRCD" ToRole="KDSCMSMSTITEM" />
+        </EntityType>
+        <EntityType Name="KDSCMSSASS">
+          <Key>
+            <PropertyRef Name="SASSITEMID" />
+            <PropertyRef Name="SASSSITEID" />
+            <PropertyRef Name="SASSVRNT" />
+          </Key>
+          <Property Name="SASSITEMID" Type="Int32" Nullable="false" />
+          <Property Name="SASSSITEID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SASSVRNT" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SASSSTAT" Type="Int16" />
+          <Property Name="SASSINTF" Type="Int16" />
+          <Property Name="SASSCDAT" Type="DateTime" />
+          <Property Name="SASSMDAT" Type="DateTime" />
+          <Property Name="SASSCRBY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SASSMOBY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SASSNMOD" Type="Int64" />
+        </EntityType>
+        <EntityType Name="KDSCMSSPRICE">
+          <Key>
+            <PropertyRef Name="SPRCITEMID" />
+            <PropertyRef Name="SPRCVRNTID" />
+            <PropertyRef Name="SPRCSITE" />
+          </Key>
+          <Property Name="SPRCITEMID" Type="Int32" Nullable="false" />
+          <Property Name="SPRCVRNTID" Type="Int32" Nullable="false" />
+          <Property Name="SPRCSITE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SPRCPRICE" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
+          <Property Name="SPRCVAT" Type="Int16" Nullable="false" />
+          <Property Name="SPRCSDAT" Type="DateTime" Nullable="false" />
+          <Property Name="SPRCEDAT" Type="DateTime" Nullable="false" />
+          <Property Name="SPRCINTF" Type="Int16" />
+          <Property Name="SPRCCDAT" Type="DateTime" Nullable="false" />
+          <Property Name="SPRCMDAT" Type="DateTime" Nullable="false" />
+          <Property Name="SPRCCRBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SPRCMOBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SPRCNMOD" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="KDSCMSSITE" Relationship="Model.SYS_C0011674" FromRole="KDSCMSSPRICE" ToRole="KDSCMSSITE" />
+        </EntityType>
+        <Association Name="SYS_C0011674">
+          <End Type="Model.KDSCMSSITE" Role="KDSCMSSITE" Multiplicity="1" />
+          <End Type="Model.KDSCMSSPRICE" Role="KDSCMSSPRICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSSITE">
+              <PropertyRef Name="SITESITE" />
+            </Principal>
+            <Dependent Role="KDSCMSSPRICE">
+              <PropertyRef Name="SPRCSITE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="KDSCMSMSTITEM">
+          <Key>
+            <PropertyRef Name="ITEMITEMID" />
+          </Key>
+          <Property Name="ITEMITEMID" Type="Int32" Nullable="false" />
+          <Property Name="ITEMITEMIDX" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ITEMTYPE" Type="Int16" Nullable="false" />
+          <Property Name="ITEMSDESC" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ITEMLDESC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ITEMBRNDID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ITEMINTF" Type="Int16" Nullable="false" />
+          <Property Name="ITEMCDAT" Type="DateTime" Nullable="false" />
+          <Property Name="ITEMMDAT" Type="DateTime" Nullable="false" />
+          <Property Name="ITEMCRBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ITEMMOBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ITEMNMOD" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="KDSCMSMSTBRCD" Relationship="Model.SYS_C0011683" FromRole="KDSCMSMSTITEM" ToRole="KDSCMSMSTBRCD" />
+          <NavigationProperty Name="KDSCMSMSTBRND" Relationship="Model.KDSCMSMSTITEM_FK1" FromRole="KDSCMSMSTITEM" ToRole="KDSCMSMSTBRND" />
+        </EntityType>
+        <Association Name="SYS_C0011683">
+          <End Type="Model.KDSCMSMSTITEM" Role="KDSCMSMSTITEM" Multiplicity="1" />
+          <End Type="Model.KDSCMSMSTBRCD" Role="KDSCMSMSTBRCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTITEM">
+              <PropertyRef Name="ITEMITEMID" />
+            </Principal>
+            <Dependent Role="KDSCMSMSTBRCD">
+              <PropertyRef Name="BRCDITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KDSCMSMSTITEM_FK1">
+          <End Type="Model.KDSCMSMSTBRND" Role="KDSCMSMSTBRND" Multiplicity="1" />
+          <End Type="Model.KDSCMSMSTITEM" Role="KDSCMSMSTITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTBRND">
+              <PropertyRef Name="BRNDBRNDID" />
+            </Principal>
+            <Dependent Role="KDSCMSMSTITEM">
+              <PropertyRef Name="ITEMBRNDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -854,6 +1112,78 @@
                 <ScalarProperty Name="CMSSALQTY" ColumnName="CMSSALQTY" />
                 <ScalarProperty Name="CMSSALBRCD" ColumnName="CMSSALBRCD" />
                 <ScalarProperty Name="CMSSALNOTA" ColumnName="CMSSALNOTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KDSCMSMSTBRCD">
+            <EntityTypeMapping TypeName="Model.KDSCMSMSTBRCD">
+              <MappingFragment StoreEntitySet="KDSCMSMSTBRCD">
+                <ScalarProperty Name="BRCDNMOD" ColumnName="BRCDNMOD" />
+                <ScalarProperty Name="BRCDMOBY" ColumnName="BRCDMOBY" />
+                <ScalarProperty Name="BRCDCRBY" ColumnName="BRCDCRBY" />
+                <ScalarProperty Name="BRCDMDAT" ColumnName="BRCDMDAT" />
+                <ScalarProperty Name="BRCDCDAT" ColumnName="BRCDCDAT" />
+                <ScalarProperty Name="BRCDINTF" ColumnName="BRCDINTF" />
+                <ScalarProperty Name="BRCDEDAT" ColumnName="BRCDEDAT" />
+                <ScalarProperty Name="BRCDSDAT" ColumnName="BRCDSDAT" />
+                <ScalarProperty Name="BRCDSTAT" ColumnName="BRCDSTAT" />
+                <ScalarProperty Name="BRCDTYPE" ColumnName="BRCDTYPE" />
+                <ScalarProperty Name="BRCDVRNTID" ColumnName="BRCDVRNTID" />
+                <ScalarProperty Name="BRCDITEMID" ColumnName="BRCDITEMID" />
+                <ScalarProperty Name="BRCDBRCDID" ColumnName="BRCDBRCDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KDSCMSSASS">
+            <EntityTypeMapping TypeName="Model.KDSCMSSASS">
+              <MappingFragment StoreEntitySet="KDSCMSSASS">
+                <ScalarProperty Name="SASSNMOD" ColumnName="SASSNMOD" />
+                <ScalarProperty Name="SASSMOBY" ColumnName="SASSMOBY" />
+                <ScalarProperty Name="SASSCRBY" ColumnName="SASSCRBY" />
+                <ScalarProperty Name="SASSMDAT" ColumnName="SASSMDAT" />
+                <ScalarProperty Name="SASSCDAT" ColumnName="SASSCDAT" />
+                <ScalarProperty Name="SASSINTF" ColumnName="SASSINTF" />
+                <ScalarProperty Name="SASSSTAT" ColumnName="SASSSTAT" />
+                <ScalarProperty Name="SASSVRNT" ColumnName="SASSVRNT" />
+                <ScalarProperty Name="SASSSITEID" ColumnName="SASSSITEID" />
+                <ScalarProperty Name="SASSITEMID" ColumnName="SASSITEMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KDSCMSSPRICE">
+            <EntityTypeMapping TypeName="Model.KDSCMSSPRICE">
+              <MappingFragment StoreEntitySet="KDSCMSSPRICE">
+                <ScalarProperty Name="SPRCNMOD" ColumnName="SPRCNMOD" />
+                <ScalarProperty Name="SPRCMOBY" ColumnName="SPRCMOBY" />
+                <ScalarProperty Name="SPRCCRBY" ColumnName="SPRCCRBY" />
+                <ScalarProperty Name="SPRCMDAT" ColumnName="SPRCMDAT" />
+                <ScalarProperty Name="SPRCCDAT" ColumnName="SPRCCDAT" />
+                <ScalarProperty Name="SPRCINTF" ColumnName="SPRCINTF" />
+                <ScalarProperty Name="SPRCEDAT" ColumnName="SPRCEDAT" />
+                <ScalarProperty Name="SPRCSDAT" ColumnName="SPRCSDAT" />
+                <ScalarProperty Name="SPRCVAT" ColumnName="SPRCVAT" />
+                <ScalarProperty Name="SPRCPRICE" ColumnName="SPRCPRICE" />
+                <ScalarProperty Name="SPRCSITE" ColumnName="SPRCSITE" />
+                <ScalarProperty Name="SPRCVRNTID" ColumnName="SPRCVRNTID" />
+                <ScalarProperty Name="SPRCITEMID" ColumnName="SPRCITEMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KDSCMSMSTITEM">
+            <EntityTypeMapping TypeName="Model.KDSCMSMSTITEM">
+              <MappingFragment StoreEntitySet="KDSCMSMSTITEM">
+                <ScalarProperty Name="ITEMNMOD" ColumnName="ITEMNMOD" />
+                <ScalarProperty Name="ITEMMOBY" ColumnName="ITEMMOBY" />
+                <ScalarProperty Name="ITEMCRBY" ColumnName="ITEMCRBY" />
+                <ScalarProperty Name="ITEMMDAT" ColumnName="ITEMMDAT" />
+                <ScalarProperty Name="ITEMCDAT" ColumnName="ITEMCDAT" />
+                <ScalarProperty Name="ITEMINTF" ColumnName="ITEMINTF" />
+                <ScalarProperty Name="ITEMBRNDID" ColumnName="ITEMBRNDID" />
+                <ScalarProperty Name="ITEMLDESC" ColumnName="ITEMLDESC" />
+                <ScalarProperty Name="ITEMSDESC" ColumnName="ITEMSDESC" />
+                <ScalarProperty Name="ITEMTYPE" ColumnName="ITEMTYPE" />
+                <ScalarProperty Name="ITEMITEMIDX" ColumnName="ITEMITEMIDX" />
+                <ScalarProperty Name="ITEMITEMID" ColumnName="ITEMITEMID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -22,6 +22,13 @@
         <AssociationConnector Association="Model.SYS_C007471" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Model.KDSCMSPARDTABLE" Width="1.5" PointX="7.875" PointY="0.75" />
         <EntityTypeShape EntityType="Model.KDSCMSSALES_INT" Width="1.75" PointX="8.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.KDSCMSMSTBRCD" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.KDSCMSSASS" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Model.KDSCMSSPRICE" Width="1.5" PointX="3.375" PointY="19.625" />
+        <AssociationConnector Association="Model.SYS_C0011674" />
+        <EntityTypeShape EntityType="Model.KDSCMSMSTITEM" Width="1.5" PointX="6" PointY="14.625" />
+        <AssociationConnector Association="Model.SYS_C0011683" />
+        <AssociationConnector Association="Model.KDSCMSMSTITEM_FK1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

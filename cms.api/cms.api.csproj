@@ -214,6 +214,7 @@
     <Compile Include="Controllers\BrandsController.cs" />
     <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Controllers\KDSCMSSITEsController.cs" />
+    <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Controllers\SkuController.cs" />
@@ -229,6 +230,8 @@
     <Compile Include="JsonModels\JSiteProfile.cs" />
     <Compile Include="JsonModels\JSkuDetail.cs" />
     <Compile Include="JsonModels\JSkuHeader.cs" />
+    <Compile Include="JsonModels\JSkuList.cs" />
+    <Compile Include="JsonModels\JSkuLists.cs" />
     <Compile Include="JsonModels\JUser.cs" />
     <Compile Include="JsonModels\JSkuLink.cs" />
     <Compile Include="Models\CMSModels.Context.cs">
@@ -246,7 +249,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CMSModels.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\KDSCMSMSTBRCD.cs">
+      <DependentUpon>CMSModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KDSCMSMSTBRND.cs">
+      <DependentUpon>CMSModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KDSCMSMSTITEM.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KDSCMSPARDTABLE.cs">
@@ -256,6 +265,9 @@
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KDSCMSSALES_INT.cs">
+      <DependentUpon>CMSModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KDSCMSSASS.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KDSCMSSITE.cs">
@@ -271,6 +283,9 @@
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KDSCMSSKULINK.cs">
+      <DependentUpon>CMSModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KDSCMSSPRICE.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KDSCMSUSER.cs">
