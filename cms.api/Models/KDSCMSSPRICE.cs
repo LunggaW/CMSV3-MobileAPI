@@ -29,5 +29,6 @@ namespace cms.api.Models
         public long SPRCNMOD { get; set; }
     
         public virtual KDSCMSSITE KDSCMSSITE { get; set; }
+        public virtual KDSCMSMSTVRNT KDSCMSMSTVRNT { get; set; }
     }
 }

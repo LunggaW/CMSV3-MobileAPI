@@ -39,5 +39,9 @@ namespace cms.api.Models
         public virtual DbSet<KDSCMSSASS> KDSCMSSASS { get; set; }
         public virtual DbSet<KDSCMSSPRICE> KDSCMSSPRICE { get; set; }
         public virtual DbSet<KDSCMSMSTITEM> KDSCMSMSTITEM { get; set; }
+        public virtual DbSet<KDSCMSSLSH> KDSCMSSLSH { get; set; }
+        public virtual DbSet<KDSCMSSLSD> KDSCMSSLSD { get; set; }
+        public virtual DbSet<KDSCMSSLSCOM_INT> KDSCMSSLSCOM_INT { get; set; }
+        public virtual DbSet<KDSCMSMSTVRNT> KDSCMSMSTVRNT { get; set; }
     }
 }

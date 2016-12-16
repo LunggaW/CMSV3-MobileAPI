@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5fa8672116a84314bee767691773dbb8" Name="Diagram1">
+      <Diagram DiagramId="5fa8672116a84314bee767691773dbb8" Name="Diagram1" ZoomLevel="63">
         <EntityTypeShape EntityType="Model.KDSCMSMSTBRND" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.KDSCMSPROFSITELINK" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.KDSCMSSITE" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
@@ -29,6 +29,15 @@
         <EntityTypeShape EntityType="Model.KDSCMSMSTITEM" Width="1.5" PointX="6" PointY="14.625" />
         <AssociationConnector Association="Model.SYS_C0011683" />
         <AssociationConnector Association="Model.KDSCMSMSTITEM_FK1" />
+        <EntityTypeShape EntityType="Model.KDSCMSSLSH" Width="1.5" PointX="3" PointY="24.25" />
+        <AssociationConnector Association="Model.SYS_C0011675" />
+        <EntityTypeShape EntityType="Model.KDSCMSSLSD" Width="1.5" PointX="5.25" PointY="24.375" />
+        <AssociationConnector Association="Model.SYS_C0011668" />
+        <EntityTypeShape EntityType="Model.KDSCMSSLSCOM_INT" Width="1.5" PointX="11.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Model.KDSCMSMSTVRNT" Width="1.5" PointX="8.25" PointY="14.625" />
+        <AssociationConnector Association="Model.SYS_C0011681" />
+        <AssociationConnector Association="Model.SYS_C0011682" />
+        <AssociationConnector Association="Model.SYS_C0011680" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -55,6 +55,24 @@
           <Property Name="ITEMMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="ITEMNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="KDSCMSMSTVRNT">
+          <Key>
+            <PropertyRef Name="VRNTITEMID" />
+            <PropertyRef Name="VRNTVRNTID" />
+          </Key>
+          <Property Name="VRNTITEMID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="VRNTVRNTID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="VRNTVRNTIDX" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="VRNTSDESC" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="VRNTLDESC" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="VRNTSTAT" Type="number" Precision="1" Scale="0" />
+          <Property Name="VRNTDINTF" Type="number" Precision="1" Scale="0" />
+          <Property Name="VRNTCDAT" Type="date" Nullable="false" />
+          <Property Name="VRNTMDAT" Type="date" Nullable="false" />
+          <Property Name="VRNTCRBY" Type="varchar2" MaxLength="20" />
+          <Property Name="VRNTMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="VRNTNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="KDSCMSPARDTABLE">
           <Key>
             <PropertyRef Name="PARDTABID" />
@@ -228,6 +246,98 @@
           <Property Name="SKULINKMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
           <Property Name="SKULINKNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="KDSCMSSLSCOM_INT">
+          <Key>
+            <PropertyRef Name="CMSSALSEQ" />
+          </Key>
+          <Property Name="CMSSALSEQ" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CMSSALSITE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="CMSSALNOTA" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="CMSSALTRNDATE" Type="date" />
+          <Property Name="CMSSALBRCD" Type="varchar2" MaxLength="20" />
+          <Property Name="CMSSALQTY" Type="number" Precision="10" Scale="0" />
+          <Property Name="CMSSALSKU" Type="number" Precision="10" Scale="0" />
+          <Property Name="CMSSALPRC" Type="number" Precision="18" Scale="3" />
+          <Property Name="CMSSALCOMM" Type="varchar2" MaxLength="1000" />
+          <Property Name="CMSSALFLAG" Type="number" Precision="1" Scale="0" />
+          <Property Name="CMSSALSTAT" Type="number" Precision="2" Scale="0" />
+          <Property Name="CMSSALCDAT" Type="date" Nullable="false" />
+          <Property Name="CMSSALCRBY" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KDSCMSSLSD">
+          <Key>
+            <PropertyRef Name="SLSDSLID" />
+            <PropertyRef Name="SLSDSLIDI" />
+            <PropertyRef Name="SLSDSLNOTA" />
+            <PropertyRef Name="SLSDRCPTID" />
+            <PropertyRef Name="SLSDLNNUM" />
+          </Key>
+          <Property Name="SLSDSLID" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSDSLIDI" Type="number" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="SLSDSLNOTA" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSDRCPTID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="SLSDLNNUM" Type="number" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="SLSDSLDATE" Type="date" Nullable="false" />
+          <Property Name="SLSDSITE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSDITEMID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SLSDVRNTID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SLSDBRCD" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSDSLQTY" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="SLSDSKUID" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSDSLPRC" Type="number" Precision="12" Scale="3" Nullable="false" />
+          <Property Name="SLSDTOTPRC" Type="number" Precision="12" Scale="3" Nullable="false" />
+          <Property Name="SLSDDISCPC" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDDISCPP" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDDISCAC" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDDISCAP" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDMRGNC" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDMRGNP" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDADMC" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDADMP" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDDISCTOT" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDSLTOT" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDVAT" Type="number" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="SLSDVATV" Type="number" Precision="12" Scale="3" />
+          <Property Name="SLSDVALBY" Type="varchar2" MaxLength="12" />
+          <Property Name="SLSDREJBY" Type="varchar2" MaxLength="12" />
+          <Property Name="SLSDRETBY" Type="varchar2" MaxLength="12" />
+          <Property Name="SLSDCOMM" Type="varchar2" MaxLength="100" />
+          <Property Name="SLSDSTAT" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="SLSDFLAG" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="SLSDINTF" Type="number" Precision="1" Scale="0" />
+          <Property Name="SLSDCDAT" Type="date" Nullable="false" />
+          <Property Name="SLSDMDAT" Type="date" Nullable="false" />
+          <Property Name="SLSDCRBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSDMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSDNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="SLSDSLTOTCUS" Type="number" Precision="12" Scale="3" />
+        </EntityType>
+        <EntityType Name="KDSCMSSLSH">
+          <Key>
+            <PropertyRef Name="SLSHSLID" />
+            <PropertyRef Name="SLSHSLIDI" />
+            <PropertyRef Name="SLSHSLNOTA" />
+            <PropertyRef Name="SLSHRCPTID" />
+          </Key>
+          <Property Name="SLSHSLID" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSHSLIDI" Type="number" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="SLSHSLNOTA" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSHRCPTID" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="SLSHSLDATE" Type="date" Nullable="false" />
+          <Property Name="SLSHSITE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSHVALBY" Type="varchar2" MaxLength="12" />
+          <Property Name="SLSHREJBY" Type="varchar2" MaxLength="12" />
+          <Property Name="SLSHRETBY" Type="varchar2" MaxLength="12" />
+          <Property Name="SLSHCOMM" Type="varchar2" MaxLength="50" />
+          <Property Name="SLSHSTAT" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="SLSHFLAG" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="SLSHINTF" Type="number" Precision="1" Scale="0" />
+          <Property Name="SLSHCDAT" Type="date" Nullable="false" />
+          <Property Name="SLSHMDAT" Type="date" Nullable="false" />
+          <Property Name="SLSHCRBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSHMOBY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SLSHNMOD" Type="number" Precision="12" Scale="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="KDSCMSSPRICE">
           <Key>
             <PropertyRef Name="SPRCITEMID" />
@@ -281,6 +391,24 @@
             </Principal>
             <Dependent Role="KDSCMSMSTITEM">
               <PropertyRef Name="ITEMBRNDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0011668">
+          <End Role="KDSCMSSLSH" Type="Self.KDSCMSSLSH" Multiplicity="1" />
+          <End Role="KDSCMSSLSD" Type="Self.KDSCMSSLSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSSLSH">
+              <PropertyRef Name="SLSHSLID" />
+              <PropertyRef Name="SLSHSLIDI" />
+              <PropertyRef Name="SLSHSLNOTA" />
+              <PropertyRef Name="SLSHRCPTID" />
+            </Principal>
+            <Dependent Role="KDSCMSSLSD">
+              <PropertyRef Name="SLSDSLID" />
+              <PropertyRef Name="SLSDSLIDI" />
+              <PropertyRef Name="SLSDSLNOTA" />
+              <PropertyRef Name="SLSDRCPTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -344,6 +472,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="SYS_C0011675">
+          <End Role="KDSCMSSITE" Type="Self.KDSCMSSITE" Multiplicity="1" />
+          <End Role="KDSCMSSLSH" Type="Self.KDSCMSSLSH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSSITE">
+              <PropertyRef Name="SITESITE" />
+            </Principal>
+            <Dependent Role="KDSCMSSLSH">
+              <PropertyRef Name="SLSHSITE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="SYS_C0011676">
           <End Role="KDSCMSSITE" Type="Self.KDSCMSSITE" Multiplicity="1" />
           <End Role="KDSCMSSKULINK" Type="Self.KDSCMSSKULINK" Multiplicity="*" />
@@ -365,6 +505,46 @@
             </Principal>
             <Dependent Role="KDSCMSPROFSITELINK">
               <PropertyRef Name="PRSTSITE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0011680">
+          <End Role="KDSCMSMSTVRNT" Type="Self.KDSCMSMSTVRNT" Multiplicity="1" />
+          <End Role="KDSCMSSPRICE" Type="Self.KDSCMSSPRICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTVRNT">
+              <PropertyRef Name="VRNTITEMID" />
+              <PropertyRef Name="VRNTVRNTID" />
+            </Principal>
+            <Dependent Role="KDSCMSSPRICE">
+              <PropertyRef Name="SPRCITEMID" />
+              <PropertyRef Name="SPRCVRNTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0011681">
+          <End Role="KDSCMSMSTVRNT" Type="Self.KDSCMSMSTVRNT" Multiplicity="1" />
+          <End Role="KDSCMSMSTBRCD" Type="Self.KDSCMSMSTBRCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTVRNT">
+              <PropertyRef Name="VRNTITEMID" />
+              <PropertyRef Name="VRNTVRNTID" />
+            </Principal>
+            <Dependent Role="KDSCMSMSTBRCD">
+              <PropertyRef Name="BRCDITEMID" />
+              <PropertyRef Name="BRCDVRNTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0011682">
+          <End Role="KDSCMSMSTITEM" Type="Self.KDSCMSMSTITEM" Multiplicity="1" />
+          <End Role="KDSCMSMSTVRNT" Type="Self.KDSCMSMSTVRNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTITEM">
+              <PropertyRef Name="ITEMITEMID" />
+            </Principal>
+            <Dependent Role="KDSCMSMSTVRNT">
+              <PropertyRef Name="VRNTITEMID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -396,6 +576,7 @@
           <EntitySet Name="KDSCMSMSTBRCD" EntityType="Self.KDSCMSMSTBRCD" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSMSTBRND" EntityType="Self.KDSCMSMSTBRND" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSMSTITEM" EntityType="Self.KDSCMSMSTITEM" Schema="CMS" store:Type="Tables" />
+          <EntitySet Name="KDSCMSMSTVRNT" EntityType="Self.KDSCMSMSTVRNT" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSPARDTABLE" EntityType="Self.KDSCMSPARDTABLE" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSPROFSITELINK" EntityType="Self.KDSCMSPROFSITELINK" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSALES_INT" EntityType="Self.KDSCMSSALES_INT" Schema="CMS" store:Type="Tables" />
@@ -405,11 +586,18 @@
           <EntitySet Name="KDSCMSSKUD" EntityType="Self.KDSCMSSKUD" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSKUH" EntityType="Self.KDSCMSSKUH" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSKULINK" EntityType="Self.KDSCMSSKULINK" Schema="CMS" store:Type="Tables" />
+          <EntitySet Name="KDSCMSSLSCOM_INT" EntityType="Self.KDSCMSSLSCOM_INT" Schema="CMS" store:Type="Tables" />
+          <EntitySet Name="KDSCMSSLSD" EntityType="Self.KDSCMSSLSD" Schema="CMS" store:Type="Tables" />
+          <EntitySet Name="KDSCMSSLSH" EntityType="Self.KDSCMSSLSH" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSSPRICE" EntityType="Self.KDSCMSSPRICE" Schema="CMS" store:Type="Tables" />
           <EntitySet Name="KDSCMSUSER" EntityType="Self.KDSCMSUSER" Schema="CMS" store:Type="Tables" />
           <AssociationSet Name="KDSCMSMSTITEM_FK1" Association="Self.KDSCMSMSTITEM_FK1">
             <End Role="KDSCMSMSTBRND" EntitySet="KDSCMSMSTBRND" />
             <End Role="KDSCMSMSTITEM" EntitySet="KDSCMSMSTITEM" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0011668" Association="Self.SYS_C0011668">
+            <End Role="KDSCMSSLSH" EntitySet="KDSCMSSLSH" />
+            <End Role="KDSCMSSLSD" EntitySet="KDSCMSSLSD" />
           </AssociationSet>
           <AssociationSet Name="SYS_C0011669" Association="Self.SYS_C0011669">
             <End Role="KDSCMSSKUH" EntitySet="KDSCMSSKUH" />
@@ -431,6 +619,10 @@
             <End Role="KDSCMSSITE" EntitySet="KDSCMSSITE" />
             <End Role="KDSCMSSPRICE" EntitySet="KDSCMSSPRICE" />
           </AssociationSet>
+          <AssociationSet Name="SYS_C0011675" Association="Self.SYS_C0011675">
+            <End Role="KDSCMSSITE" EntitySet="KDSCMSSITE" />
+            <End Role="KDSCMSSLSH" EntitySet="KDSCMSSLSH" />
+          </AssociationSet>
           <AssociationSet Name="SYS_C0011676" Association="Self.SYS_C0011676">
             <End Role="KDSCMSSITE" EntitySet="KDSCMSSITE" />
             <End Role="KDSCMSSKULINK" EntitySet="KDSCMSSKULINK" />
@@ -438,6 +630,18 @@
           <AssociationSet Name="SYS_C0011678" Association="Self.SYS_C0011678">
             <End Role="KDSCMSSITE" EntitySet="KDSCMSSITE" />
             <End Role="KDSCMSPROFSITELINK" EntitySet="KDSCMSPROFSITELINK" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0011680" Association="Self.SYS_C0011680">
+            <End Role="KDSCMSMSTVRNT" EntitySet="KDSCMSMSTVRNT" />
+            <End Role="KDSCMSSPRICE" EntitySet="KDSCMSSPRICE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0011681" Association="Self.SYS_C0011681">
+            <End Role="KDSCMSMSTVRNT" EntitySet="KDSCMSMSTVRNT" />
+            <End Role="KDSCMSMSTBRCD" EntitySet="KDSCMSMSTBRCD" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0011682" Association="Self.SYS_C0011682">
+            <End Role="KDSCMSMSTITEM" EntitySet="KDSCMSMSTITEM" />
+            <End Role="KDSCMSMSTVRNT" EntitySet="KDSCMSMSTVRNT" />
           </AssociationSet>
           <AssociationSet Name="SYS_C0011683" Association="Self.SYS_C0011683">
             <End Role="KDSCMSMSTITEM" EntitySet="KDSCMSMSTITEM" />
@@ -503,6 +707,7 @@
           <NavigationProperty Name="KDSCMSPROFSITELINK" Relationship="Self.SYS_C007480" FromRole="KDSCMSSITE" ToRole="KDSCMSPROFSITELINK" />
           <NavigationProperty Name="KDSCMSSKULINK" Relationship="Self.SYS_C007478" FromRole="KDSCMSSITE" ToRole="KDSCMSSKULINK" />
           <NavigationProperty Name="KDSCMSSPRICE" Relationship="Model.SYS_C0011674" FromRole="KDSCMSSITE" ToRole="KDSCMSSPRICE" />
+          <NavigationProperty Name="KDSCMSSLSH" Relationship="Model.SYS_C0011675" FromRole="KDSCMSSITE" ToRole="KDSCMSSLSH" />
         </EntityType>
         <EntityType Name="KDSCMSSITEPROF">
           <Key>
@@ -748,6 +953,30 @@
             <End Role="KDSCMSMSTBRND" EntitySet="KDSCMSMSTBRND" />
             <End Role="KDSCMSMSTITEM" EntitySet="KDSCMSMSTITEM" />
           </AssociationSet>
+          <EntitySet Name="KDSCMSSLSH" EntityType="Model.KDSCMSSLSH" />
+          <AssociationSet Name="SYS_C0011675" Association="Model.SYS_C0011675">
+            <End Role="KDSCMSSITE" EntitySet="KDSCMSSITE" />
+            <End Role="KDSCMSSLSH" EntitySet="KDSCMSSLSH" />
+          </AssociationSet>
+          <EntitySet Name="KDSCMSSLSD" EntityType="Model.KDSCMSSLSD" />
+          <AssociationSet Name="SYS_C0011668" Association="Model.SYS_C0011668">
+            <End Role="KDSCMSSLSH" EntitySet="KDSCMSSLSH" />
+            <End Role="KDSCMSSLSD" EntitySet="KDSCMSSLSD" />
+          </AssociationSet>
+          <EntitySet Name="KDSCMSSLSCOM_INT" EntityType="Model.KDSCMSSLSCOM_INT" />
+          <EntitySet Name="KDSCMSMSTVRNT" EntityType="Model.KDSCMSMSTVRNT" />
+          <AssociationSet Name="SYS_C0011681" Association="Model.SYS_C0011681">
+            <End Role="KDSCMSMSTVRNT" EntitySet="KDSCMSMSTVRNT" />
+            <End Role="KDSCMSMSTBRCD" EntitySet="KDSCMSMSTBRCD" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0011682" Association="Model.SYS_C0011682">
+            <End Role="KDSCMSMSTITEM" EntitySet="KDSCMSMSTITEM" />
+            <End Role="KDSCMSMSTVRNT" EntitySet="KDSCMSMSTVRNT" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0011680" Association="Model.SYS_C0011680">
+            <End Role="KDSCMSMSTVRNT" EntitySet="KDSCMSMSTVRNT" />
+            <End Role="KDSCMSSPRICE" EntitySet="KDSCMSSPRICE" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="KDSCMSPARDTABLE">
           <Key>
@@ -821,6 +1050,7 @@
           <Property Name="BRCDMOBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="BRCDNMOD" Type="Int64" Nullable="false" />
           <NavigationProperty Name="KDSCMSMSTITEM" Relationship="Model.SYS_C0011683" FromRole="KDSCMSMSTBRCD" ToRole="KDSCMSMSTITEM" />
+          <NavigationProperty Name="KDSCMSMSTVRNT" Relationship="Model.SYS_C0011681" FromRole="KDSCMSMSTBRCD" ToRole="KDSCMSMSTVRNT" />
         </EntityType>
         <EntityType Name="KDSCMSSASS">
           <Key>
@@ -859,6 +1089,7 @@
           <Property Name="SPRCMOBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SPRCNMOD" Type="Int64" Nullable="false" />
           <NavigationProperty Name="KDSCMSSITE" Relationship="Model.SYS_C0011674" FromRole="KDSCMSSPRICE" ToRole="KDSCMSSITE" />
+          <NavigationProperty Name="KDSCMSMSTVRNT" Relationship="Model.SYS_C0011680" FromRole="KDSCMSSPRICE" ToRole="KDSCMSMSTVRNT" />
         </EntityType>
         <Association Name="SYS_C0011674">
           <End Type="Model.KDSCMSSITE" Role="KDSCMSSITE" Multiplicity="1" />
@@ -890,6 +1121,7 @@
           <Property Name="ITEMNMOD" Type="Int64" Nullable="false" />
           <NavigationProperty Name="KDSCMSMSTBRCD" Relationship="Model.SYS_C0011683" FromRole="KDSCMSMSTITEM" ToRole="KDSCMSMSTBRCD" />
           <NavigationProperty Name="KDSCMSMSTBRND" Relationship="Model.KDSCMSMSTITEM_FK1" FromRole="KDSCMSMSTITEM" ToRole="KDSCMSMSTBRND" />
+          <NavigationProperty Name="KDSCMSMSTVRNT" Relationship="Model.SYS_C0011682" FromRole="KDSCMSMSTITEM" ToRole="KDSCMSMSTVRNT" />
         </EntityType>
         <Association Name="SYS_C0011683">
           <End Type="Model.KDSCMSMSTITEM" Role="KDSCMSMSTITEM" Multiplicity="1" />
@@ -912,6 +1144,192 @@
             </Principal>
             <Dependent Role="KDSCMSMSTITEM">
               <PropertyRef Name="ITEMBRNDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="KDSCMSSLSH">
+          <Key>
+            <PropertyRef Name="SLSHSLID" />
+            <PropertyRef Name="SLSHSLIDI" />
+            <PropertyRef Name="SLSHSLNOTA" />
+            <PropertyRef Name="SLSHRCPTID" />
+          </Key>
+          <Property Name="SLSHSLID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHSLIDI" Type="Int64" Nullable="false" />
+          <Property Name="SLSHSLNOTA" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHRCPTID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHSLDATE" Type="DateTime" Nullable="false" />
+          <Property Name="SLSHSITE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHVALBY" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHREJBY" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHRETBY" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHCOMM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHSTAT" Type="Int16" Nullable="false" />
+          <Property Name="SLSHFLAG" Type="Int16" Nullable="false" />
+          <Property Name="SLSHINTF" Type="Int16" />
+          <Property Name="SLSHCDAT" Type="DateTime" Nullable="false" />
+          <Property Name="SLSHMDAT" Type="DateTime" Nullable="false" />
+          <Property Name="SLSHCRBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHMOBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSHNMOD" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="KDSCMSSITE" Relationship="Model.SYS_C0011675" FromRole="KDSCMSSLSH" ToRole="KDSCMSSITE" />
+          <NavigationProperty Name="KDSCMSSLSD" Relationship="Model.SYS_C0011668" FromRole="KDSCMSSLSH" ToRole="KDSCMSSLSD" />
+        </EntityType>
+        <Association Name="SYS_C0011675">
+          <End Type="Model.KDSCMSSITE" Role="KDSCMSSITE" Multiplicity="1" />
+          <End Type="Model.KDSCMSSLSH" Role="KDSCMSSLSH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSSITE">
+              <PropertyRef Name="SITESITE" />
+            </Principal>
+            <Dependent Role="KDSCMSSLSH">
+              <PropertyRef Name="SLSHSITE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="KDSCMSSLSD">
+          <Key>
+            <PropertyRef Name="SLSDSLID" />
+            <PropertyRef Name="SLSDSLIDI" />
+            <PropertyRef Name="SLSDSLNOTA" />
+            <PropertyRef Name="SLSDRCPTID" />
+            <PropertyRef Name="SLSDLNNUM" />
+          </Key>
+          <Property Name="SLSDSLID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDSLIDI" Type="Int64" Nullable="false" />
+          <Property Name="SLSDSLNOTA" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDRCPTID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDLNNUM" Type="Int16" Nullable="false" />
+          <Property Name="SLSDSLDATE" Type="DateTime" Nullable="false" />
+          <Property Name="SLSDSITE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDITEMID" Type="Int32" Nullable="false" />
+          <Property Name="SLSDVRNTID" Type="Int32" Nullable="false" />
+          <Property Name="SLSDBRCD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDSLQTY" Type="Int16" Nullable="false" />
+          <Property Name="SLSDSKUID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDSLPRC" Type="Decimal" Nullable="false" Precision="12" Scale="3" />
+          <Property Name="SLSDTOTPRC" Type="Decimal" Nullable="false" Precision="12" Scale="3" />
+          <Property Name="SLSDDISCPC" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDDISCPP" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDDISCAC" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDDISCAP" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDMRGNC" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDMRGNP" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDADMC" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDADMP" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDDISCTOT" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDSLTOT" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDVAT" Type="Int16" Nullable="false" />
+          <Property Name="SLSDVATV" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="SLSDVALBY" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDREJBY" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDRETBY" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDCOMM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDSTAT" Type="Int16" Nullable="false" />
+          <Property Name="SLSDFLAG" Type="Int16" Nullable="false" />
+          <Property Name="SLSDINTF" Type="Int16" />
+          <Property Name="SLSDCDAT" Type="DateTime" Nullable="false" />
+          <Property Name="SLSDMDAT" Type="DateTime" Nullable="false" />
+          <Property Name="SLSDCRBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDMOBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SLSDNMOD" Type="Int64" Nullable="false" />
+          <Property Name="SLSDSLTOTCUS" Type="Decimal" Precision="12" Scale="3" />
+          <NavigationProperty Name="KDSCMSSLSH" Relationship="Model.SYS_C0011668" FromRole="KDSCMSSLSD" ToRole="KDSCMSSLSH" />
+        </EntityType>
+        <Association Name="SYS_C0011668">
+          <End Type="Model.KDSCMSSLSH" Role="KDSCMSSLSH" Multiplicity="1" />
+          <End Type="Model.KDSCMSSLSD" Role="KDSCMSSLSD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSSLSH">
+              <PropertyRef Name="SLSHSLID" />
+              <PropertyRef Name="SLSHSLIDI" />
+              <PropertyRef Name="SLSHSLNOTA" />
+              <PropertyRef Name="SLSHRCPTID" />
+            </Principal>
+            <Dependent Role="KDSCMSSLSD">
+              <PropertyRef Name="SLSDSLID" />
+              <PropertyRef Name="SLSDSLIDI" />
+              <PropertyRef Name="SLSDSLNOTA" />
+              <PropertyRef Name="SLSDRCPTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="KDSCMSSLSCOM_INT">
+          <Key>
+            <PropertyRef Name="CMSSALSEQ" />
+          </Key>
+          <Property Name="CMSSALSEQ" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CMSSALSITE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CMSSALNOTA" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CMSSALTRNDATE" Type="DateTime" />
+          <Property Name="CMSSALBRCD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CMSSALQTY" Type="Int32" />
+          <Property Name="CMSSALSKU" Type="Int32" />
+          <Property Name="CMSSALPRC" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CMSSALCOMM" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CMSSALFLAG" Type="Int16" />
+          <Property Name="CMSSALSTAT" Type="Int16" />
+          <Property Name="CMSSALCDAT" Type="DateTime" Nullable="false" />
+          <Property Name="CMSSALCRBY" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KDSCMSMSTVRNT">
+          <Key>
+            <PropertyRef Name="VRNTITEMID" />
+            <PropertyRef Name="VRNTVRNTID" />
+          </Key>
+          <Property Name="VRNTITEMID" Type="Int32" Nullable="false" />
+          <Property Name="VRNTVRNTID" Type="Int32" Nullable="false" />
+          <Property Name="VRNTVRNTIDX" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VRNTSDESC" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="VRNTLDESC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VRNTSTAT" Type="Int16" />
+          <Property Name="VRNTDINTF" Type="Int16" />
+          <Property Name="VRNTCDAT" Type="DateTime" Nullable="false" />
+          <Property Name="VRNTMDAT" Type="DateTime" Nullable="false" />
+          <Property Name="VRNTCRBY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VRNTMOBY" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VRNTNMOD" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="KDSCMSMSTBRCD" Relationship="Model.SYS_C0011681" FromRole="KDSCMSMSTVRNT" ToRole="KDSCMSMSTBRCD" />
+          <NavigationProperty Name="KDSCMSMSTITEM" Relationship="Model.SYS_C0011682" FromRole="KDSCMSMSTVRNT" ToRole="KDSCMSMSTITEM" />
+          <NavigationProperty Name="KDSCMSSPRICE" Relationship="Model.SYS_C0011680" FromRole="KDSCMSMSTVRNT" ToRole="KDSCMSSPRICE" />
+        </EntityType>
+        <Association Name="SYS_C0011681">
+          <End Type="Model.KDSCMSMSTVRNT" Role="KDSCMSMSTVRNT" Multiplicity="1" />
+          <End Type="Model.KDSCMSMSTBRCD" Role="KDSCMSMSTBRCD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTVRNT">
+              <PropertyRef Name="VRNTITEMID" />
+              <PropertyRef Name="VRNTVRNTID" />
+            </Principal>
+            <Dependent Role="KDSCMSMSTBRCD">
+              <PropertyRef Name="BRCDITEMID" />
+              <PropertyRef Name="BRCDVRNTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0011682">
+          <End Type="Model.KDSCMSMSTITEM" Role="KDSCMSMSTITEM" Multiplicity="1" />
+          <End Type="Model.KDSCMSMSTVRNT" Role="KDSCMSMSTVRNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTITEM">
+              <PropertyRef Name="ITEMITEMID" />
+            </Principal>
+            <Dependent Role="KDSCMSMSTVRNT">
+              <PropertyRef Name="VRNTITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0011680">
+          <End Type="Model.KDSCMSMSTVRNT" Role="KDSCMSMSTVRNT" Multiplicity="1" />
+          <End Type="Model.KDSCMSSPRICE" Role="KDSCMSSPRICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KDSCMSMSTVRNT">
+              <PropertyRef Name="VRNTITEMID" />
+              <PropertyRef Name="VRNTVRNTID" />
+            </Principal>
+            <Dependent Role="KDSCMSSPRICE">
+              <PropertyRef Name="SPRCITEMID" />
+              <PropertyRef Name="SPRCVRNTID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1184,6 +1602,112 @@
                 <ScalarProperty Name="ITEMTYPE" ColumnName="ITEMTYPE" />
                 <ScalarProperty Name="ITEMITEMIDX" ColumnName="ITEMITEMIDX" />
                 <ScalarProperty Name="ITEMITEMID" ColumnName="ITEMITEMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KDSCMSSLSH">
+            <EntityTypeMapping TypeName="Model.KDSCMSSLSH">
+              <MappingFragment StoreEntitySet="KDSCMSSLSH">
+                <ScalarProperty Name="SLSHNMOD" ColumnName="SLSHNMOD" />
+                <ScalarProperty Name="SLSHMOBY" ColumnName="SLSHMOBY" />
+                <ScalarProperty Name="SLSHCRBY" ColumnName="SLSHCRBY" />
+                <ScalarProperty Name="SLSHMDAT" ColumnName="SLSHMDAT" />
+                <ScalarProperty Name="SLSHCDAT" ColumnName="SLSHCDAT" />
+                <ScalarProperty Name="SLSHINTF" ColumnName="SLSHINTF" />
+                <ScalarProperty Name="SLSHFLAG" ColumnName="SLSHFLAG" />
+                <ScalarProperty Name="SLSHSTAT" ColumnName="SLSHSTAT" />
+                <ScalarProperty Name="SLSHCOMM" ColumnName="SLSHCOMM" />
+                <ScalarProperty Name="SLSHRETBY" ColumnName="SLSHRETBY" />
+                <ScalarProperty Name="SLSHREJBY" ColumnName="SLSHREJBY" />
+                <ScalarProperty Name="SLSHVALBY" ColumnName="SLSHVALBY" />
+                <ScalarProperty Name="SLSHSITE" ColumnName="SLSHSITE" />
+                <ScalarProperty Name="SLSHSLDATE" ColumnName="SLSHSLDATE" />
+                <ScalarProperty Name="SLSHRCPTID" ColumnName="SLSHRCPTID" />
+                <ScalarProperty Name="SLSHSLNOTA" ColumnName="SLSHSLNOTA" />
+                <ScalarProperty Name="SLSHSLIDI" ColumnName="SLSHSLIDI" />
+                <ScalarProperty Name="SLSHSLID" ColumnName="SLSHSLID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KDSCMSSLSD">
+            <EntityTypeMapping TypeName="Model.KDSCMSSLSD">
+              <MappingFragment StoreEntitySet="KDSCMSSLSD">
+                <ScalarProperty Name="SLSDSLTOTCUS" ColumnName="SLSDSLTOTCUS" />
+                <ScalarProperty Name="SLSDNMOD" ColumnName="SLSDNMOD" />
+                <ScalarProperty Name="SLSDMOBY" ColumnName="SLSDMOBY" />
+                <ScalarProperty Name="SLSDCRBY" ColumnName="SLSDCRBY" />
+                <ScalarProperty Name="SLSDMDAT" ColumnName="SLSDMDAT" />
+                <ScalarProperty Name="SLSDCDAT" ColumnName="SLSDCDAT" />
+                <ScalarProperty Name="SLSDINTF" ColumnName="SLSDINTF" />
+                <ScalarProperty Name="SLSDFLAG" ColumnName="SLSDFLAG" />
+                <ScalarProperty Name="SLSDSTAT" ColumnName="SLSDSTAT" />
+                <ScalarProperty Name="SLSDCOMM" ColumnName="SLSDCOMM" />
+                <ScalarProperty Name="SLSDRETBY" ColumnName="SLSDRETBY" />
+                <ScalarProperty Name="SLSDREJBY" ColumnName="SLSDREJBY" />
+                <ScalarProperty Name="SLSDVALBY" ColumnName="SLSDVALBY" />
+                <ScalarProperty Name="SLSDVATV" ColumnName="SLSDVATV" />
+                <ScalarProperty Name="SLSDVAT" ColumnName="SLSDVAT" />
+                <ScalarProperty Name="SLSDSLTOT" ColumnName="SLSDSLTOT" />
+                <ScalarProperty Name="SLSDDISCTOT" ColumnName="SLSDDISCTOT" />
+                <ScalarProperty Name="SLSDADMP" ColumnName="SLSDADMP" />
+                <ScalarProperty Name="SLSDADMC" ColumnName="SLSDADMC" />
+                <ScalarProperty Name="SLSDMRGNP" ColumnName="SLSDMRGNP" />
+                <ScalarProperty Name="SLSDMRGNC" ColumnName="SLSDMRGNC" />
+                <ScalarProperty Name="SLSDDISCAP" ColumnName="SLSDDISCAP" />
+                <ScalarProperty Name="SLSDDISCAC" ColumnName="SLSDDISCAC" />
+                <ScalarProperty Name="SLSDDISCPP" ColumnName="SLSDDISCPP" />
+                <ScalarProperty Name="SLSDDISCPC" ColumnName="SLSDDISCPC" />
+                <ScalarProperty Name="SLSDTOTPRC" ColumnName="SLSDTOTPRC" />
+                <ScalarProperty Name="SLSDSLPRC" ColumnName="SLSDSLPRC" />
+                <ScalarProperty Name="SLSDSKUID" ColumnName="SLSDSKUID" />
+                <ScalarProperty Name="SLSDSLQTY" ColumnName="SLSDSLQTY" />
+                <ScalarProperty Name="SLSDBRCD" ColumnName="SLSDBRCD" />
+                <ScalarProperty Name="SLSDVRNTID" ColumnName="SLSDVRNTID" />
+                <ScalarProperty Name="SLSDITEMID" ColumnName="SLSDITEMID" />
+                <ScalarProperty Name="SLSDSITE" ColumnName="SLSDSITE" />
+                <ScalarProperty Name="SLSDSLDATE" ColumnName="SLSDSLDATE" />
+                <ScalarProperty Name="SLSDLNNUM" ColumnName="SLSDLNNUM" />
+                <ScalarProperty Name="SLSDRCPTID" ColumnName="SLSDRCPTID" />
+                <ScalarProperty Name="SLSDSLNOTA" ColumnName="SLSDSLNOTA" />
+                <ScalarProperty Name="SLSDSLIDI" ColumnName="SLSDSLIDI" />
+                <ScalarProperty Name="SLSDSLID" ColumnName="SLSDSLID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KDSCMSSLSCOM_INT">
+            <EntityTypeMapping TypeName="Model.KDSCMSSLSCOM_INT">
+              <MappingFragment StoreEntitySet="KDSCMSSLSCOM_INT">
+                <ScalarProperty Name="CMSSALCRBY" ColumnName="CMSSALCRBY" />
+                <ScalarProperty Name="CMSSALCDAT" ColumnName="CMSSALCDAT" />
+                <ScalarProperty Name="CMSSALSTAT" ColumnName="CMSSALSTAT" />
+                <ScalarProperty Name="CMSSALFLAG" ColumnName="CMSSALFLAG" />
+                <ScalarProperty Name="CMSSALCOMM" ColumnName="CMSSALCOMM" />
+                <ScalarProperty Name="CMSSALPRC" ColumnName="CMSSALPRC" />
+                <ScalarProperty Name="CMSSALSKU" ColumnName="CMSSALSKU" />
+                <ScalarProperty Name="CMSSALQTY" ColumnName="CMSSALQTY" />
+                <ScalarProperty Name="CMSSALBRCD" ColumnName="CMSSALBRCD" />
+                <ScalarProperty Name="CMSSALTRNDATE" ColumnName="CMSSALTRNDATE" />
+                <ScalarProperty Name="CMSSALNOTA" ColumnName="CMSSALNOTA" />
+                <ScalarProperty Name="CMSSALSITE" ColumnName="CMSSALSITE" />
+                <ScalarProperty Name="CMSSALSEQ" ColumnName="CMSSALSEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KDSCMSMSTVRNT">
+            <EntityTypeMapping TypeName="Model.KDSCMSMSTVRNT">
+              <MappingFragment StoreEntitySet="KDSCMSMSTVRNT">
+                <ScalarProperty Name="VRNTNMOD" ColumnName="VRNTNMOD" />
+                <ScalarProperty Name="VRNTMOBY" ColumnName="VRNTMOBY" />
+                <ScalarProperty Name="VRNTCRBY" ColumnName="VRNTCRBY" />
+                <ScalarProperty Name="VRNTMDAT" ColumnName="VRNTMDAT" />
+                <ScalarProperty Name="VRNTCDAT" ColumnName="VRNTCDAT" />
+                <ScalarProperty Name="VRNTDINTF" ColumnName="VRNTDINTF" />
+                <ScalarProperty Name="VRNTSTAT" ColumnName="VRNTSTAT" />
+                <ScalarProperty Name="VRNTLDESC" ColumnName="VRNTLDESC" />
+                <ScalarProperty Name="VRNTSDESC" ColumnName="VRNTSDESC" />
+                <ScalarProperty Name="VRNTVRNTIDX" ColumnName="VRNTVRNTIDX" />
+                <ScalarProperty Name="VRNTVRNTID" ColumnName="VRNTVRNTID" />
+                <ScalarProperty Name="VRNTITEMID" ColumnName="VRNTITEMID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

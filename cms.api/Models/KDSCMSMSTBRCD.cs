@@ -29,5 +29,6 @@ namespace cms.api.Models
         public long BRCDNMOD { get; set; }
     
         public virtual KDSCMSMSTITEM KDSCMSMSTITEM { get; set; }
+        public virtual KDSCMSMSTVRNT KDSCMSMSTVRNT { get; set; }
     }
 }

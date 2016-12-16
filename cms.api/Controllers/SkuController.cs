@@ -227,8 +227,8 @@ namespace cms.api.Controllers
 
                         foreach (KDSCMSSKUH skuLists in lists)
                         {
-                            logger.Error("Sku ID : " + skuLists.SKUHSKUID);
-                            logger.Error("Sku Desc : " + skuLists.SKUHSDES);
+                            logger.Debug("Sku ID : " + skuLists.SKUHSKUID);
+                            logger.Debug("Sku Desc : " + skuLists.SKUHSDES);
                             list = new JSkuList { skuid = skuLists.SKUHSKUID, skuDesc = skuLists.SKUHSDES };
 
                             jskulists.Add(list);

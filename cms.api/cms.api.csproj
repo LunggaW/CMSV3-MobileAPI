@@ -225,7 +225,16 @@
     <Compile Include="Helper.cs" />
     <Compile Include="JsonModels\JBrand.cs" />
     <Compile Include="JsonModels\JProfSiteLink.cs" />
+    <Compile Include="JsonModels\JQtyList.cs" />
+    <Compile Include="JsonModels\JSalesDetail.cs" />
+    <Compile Include="JsonModels\JSalesDetailPrimary.cs" />
+    <Compile Include="JsonModels\JSalesDetList.cs" />
+    <Compile Include="JsonModels\JSalesHeader.cs" />
+    <Compile Include="JsonModels\JSalesHeaderLists.cs" />
+    <Compile Include="JsonModels\JSalesHeaderView.cs" />
+    <Compile Include="JsonModels\JTransLists.cs" />
     <Compile Include="JsonModels\JSales.cs" />
+    <Compile Include="JsonModels\JSalesHeaderPrimary.cs" />
     <Compile Include="JsonModels\JSite.cs" />
     <Compile Include="JsonModels\JSiteProfile.cs" />
     <Compile Include="JsonModels\JSkuDetail.cs" />
@@ -258,6 +267,9 @@
     <Compile Include="Models\KDSCMSMSTITEM.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\KDSCMSMSTVRNT.cs">
+      <DependentUpon>CMSModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KDSCMSPARDTABLE.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
@@ -283,6 +295,15 @@
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KDSCMSSKULINK.cs">
+      <DependentUpon>CMSModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KDSCMSSLSCOM_INT.cs">
+      <DependentUpon>CMSModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KDSCMSSLSD.cs">
+      <DependentUpon>CMSModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KDSCMSSLSH.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KDSCMSSPRICE.cs">

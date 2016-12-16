@@ -21,6 +21,8 @@ namespace cms.api.JsonModels
         public short transflag { set; get; }
         public DateTime transdcre { set; get; }
         public string transcreby { set; get; }
+        public string transcomm { set; get; }
+        public int transiscomplex { set; get; }
 
         //Update GAGAN
         public int transdiscount { set; get; }

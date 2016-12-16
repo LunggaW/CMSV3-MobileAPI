@@ -12,32 +12,32 @@ namespace cms.api.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class KDSCMSMSTITEM
+    public partial class KDSCMSMSTVRNT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KDSCMSMSTITEM()
+        public KDSCMSMSTVRNT()
         {
             this.KDSCMSMSTBRCD = new HashSet<KDSCMSMSTBRCD>();
-            this.KDSCMSMSTVRNT = new HashSet<KDSCMSMSTVRNT>();
+            this.KDSCMSSPRICE = new HashSet<KDSCMSSPRICE>();
         }
     
-        public int ITEMITEMID { get; set; }
-        public string ITEMITEMIDX { get; set; }
-        public short ITEMTYPE { get; set; }
-        public string ITEMSDESC { get; set; }
-        public string ITEMLDESC { get; set; }
-        public string ITEMBRNDID { get; set; }
-        public short ITEMINTF { get; set; }
-        public System.DateTime ITEMCDAT { get; set; }
-        public System.DateTime ITEMMDAT { get; set; }
-        public string ITEMCRBY { get; set; }
-        public string ITEMMOBY { get; set; }
-        public long ITEMNMOD { get; set; }
+        public int VRNTITEMID { get; set; }
+        public int VRNTVRNTID { get; set; }
+        public string VRNTVRNTIDX { get; set; }
+        public string VRNTSDESC { get; set; }
+        public string VRNTLDESC { get; set; }
+        public Nullable<short> VRNTSTAT { get; set; }
+        public Nullable<short> VRNTDINTF { get; set; }
+        public System.DateTime VRNTCDAT { get; set; }
+        public System.DateTime VRNTMDAT { get; set; }
+        public string VRNTCRBY { get; set; }
+        public string VRNTMOBY { get; set; }
+        public long VRNTNMOD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KDSCMSMSTBRCD> KDSCMSMSTBRCD { get; set; }
-        public virtual KDSCMSMSTBRND KDSCMSMSTBRND { get; set; }
+        public virtual KDSCMSMSTITEM KDSCMSMSTITEM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KDSCMSMSTVRNT> KDSCMSMSTVRNT { get; set; }
+        public virtual ICollection<KDSCMSSPRICE> KDSCMSSPRICE { get; set; }
     }
 }

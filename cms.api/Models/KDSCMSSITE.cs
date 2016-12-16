@@ -20,6 +20,7 @@ namespace cms.api.Models
             this.KDSCMSPROFSITELINK = new HashSet<KDSCMSPROFSITELINK>();
             this.KDSCMSSKULINK = new HashSet<KDSCMSSKULINK>();
             this.KDSCMSSPRICE = new HashSet<KDSCMSSPRICE>();
+            this.KDSCMSSLSH = new HashSet<KDSCMSSLSH>();
         }
     
         public string SITESITE { get; set; }
@@ -40,5 +41,7 @@ namespace cms.api.Models
         public virtual ICollection<KDSCMSSKULINK> KDSCMSSKULINK { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KDSCMSSPRICE> KDSCMSSPRICE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KDSCMSSLSH> KDSCMSSLSH { get; set; }
     }
 }
