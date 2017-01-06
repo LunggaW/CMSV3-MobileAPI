@@ -19,5 +19,6 @@ namespace cms.api.JsonModels
         public Decimal totalamount { set; get; }
         public SalesTypeEnum SalesType { set; get; }
         public SalesStatusEnum SalesStatus { set; get; }
+        public int qty { set; get; }
     }
 }

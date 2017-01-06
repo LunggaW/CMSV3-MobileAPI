@@ -421,11 +421,11 @@ namespace cms.api.Controllers
                         {
 
                             logger.Debug("found Sales Header");
-                            
+
                             var SalesHeaderLists = new JSalesHeaderLists();
                             var SalesHeader = new JSalesHeader();
                             List<JSalesHeader> SalesHeaderList = new List<JSalesHeader>();
-                            
+
                             foreach (var list in SalesHeaders)
                             {
 
@@ -492,103 +492,214 @@ namespace cms.api.Controllers
 
                 if (!string.IsNullOrWhiteSpace(jsales.nota))
                 {
-                    using (var ctx = new CMSContext())
+
+                    if (jsales.nota == "ALL")
                     {
-                        logger.Debug("Nota Exist");
-
-
-
-                        //var SalesHeaders =
-                        //    ctx.Database.SqlQuery<JSalesHeaderView>(
-                        //        "select SLSHSLNOTA, SLSHSITE, SLSHCRBY, SLSHSLDATE, SLSHFLAG, SLSHSTAT, SUM(KDSCMSSLSD.SLSDSLTOTCUS) AS SLSHTOTAMT " +
-                        //        "from KDSCMSSLSH join KDSCMSSLSD " +
-                        //        "on KDSCMSSLSH.SLSHSLID = KDSCMSSLSD.SLSDSLID " +
-                        //        "where SLSHSLNOTA like '%" + jsales.nota + "%' " +
-                        //        "and SLSHSLDATE = to_date('" + jsales.date.ToString("dd-MMM-yy") + "' , 'DD-Mon-YY') " +
-                        //        "and SLSHCRBY like '%" + jsales.user + "%' " +
-                        //        "and SLSHSITE like '%" + jsales.site + "%' " +
-                        //        "AND SLSHSLIDI = SLSDSLIDI " +
-                        //        "AND SLSHSLNOTA = KDSCMSSLSD.SLSDSLNOTA " +
-                        //        "GROUP BY SLSHSLNOTA, SLSHSITE, SLSHCRBY, SLSHSLDATE, SLSHFLAG, SLSHSTAT")
-                        //.ToList();
-
-
-
-                        var SalesHeaders = from salesH in db.KDSCMSSLSH
-                                           join salesD in db.KDSCMSSLSD
-                                               on salesH.SLSHSLID equals salesD.SLSDSLID
-                                           where salesH.SLSHSITE.Contains(jsales.site)
-                                                 && salesH.SLSHSLNOTA.Contains(jsales.nota)
-                                                 && salesH.SLSHSLDATE == jsales.date
-                                                 && salesH.SLSHCRBY.Contains(jsales.user)
-                                                 && salesH.SLSHSLIDI == salesD.SLSDSLIDI
-                                                 && salesH.SLSHSLNOTA.Contains(salesD.SLSDSLNOTA) 
-                                                 && salesH.SLSHSTAT == (int)jsales.SalesType
-                                                 && salesH.SLSHFLAG == (int)jsales.SalesStatus
-                                           group salesD by
-                                               new
-                                               {
-                                                   salesH.SLSHSLNOTA,
-                                                   salesH.SLSHCRBY,
-                                                   salesH.SLSHSITE,
-                                                   salesH.SLSHSLDATE,
-                                                   salesH.SLSHSTAT,
-                                                   salesH.SLSHFLAG
-                                               }
-                            into g
-                                           select new
-                                           {
-                                               nota = g.Key.SLSHSLNOTA,
-                                               site = g.Key.SLSHSITE,
-                                               user = g.Key.SLSHCRBY,
-                                               date = g.Key.SLSHSLDATE,
-                                               status = g.Key.SLSHSTAT,
-                                               type = g.Key.SLSHFLAG,
-                                               totalAmount = g.Sum(salesD => salesD.SLSDSLTOTCUS)
-                                           };
-
-                        logger.Debug("Total data retreived : " + SalesHeaders.Count());
-
-                        if (SalesHeaders.Any())
+                        using (var ctx = new CMSContext())
                         {
+                            logger.Debug("Nota Exist");
 
-                            logger.Debug("found Sales Header");
 
-                            var SalesHeaderLists = new JSalesHeaderLists();
-                            var SalesHeader = new JSalesHeader();
-                            List<JSalesHeader> SalesHeaderList = new List<JSalesHeader>();
 
-                            foreach (var list in SalesHeaders)
+                            //var SalesHeaders =
+                            //    ctx.Database.SqlQuery<JSalesHeaderView>(
+                            //        "select SLSHSLNOTA, SLSHSITE, SLSHCRBY, SLSHSLDATE, SLSHFLAG, SLSHSTAT, SUM(KDSCMSSLSD.SLSDSLTOTCUS) AS SLSHTOTAMT " +
+                            //        "from KDSCMSSLSH join KDSCMSSLSD " +
+                            //        "on KDSCMSSLSH.SLSHSLID = KDSCMSSLSD.SLSDSLID " +
+                            //        "where SLSHSLNOTA like '%" + jsales.nota + "%' " +
+                            //        "and SLSHSLDATE = to_date('" + jsales.date.ToString("dd-MMM-yy") + "' , 'DD-Mon-YY') " +
+                            //        "and SLSHCRBY like '%" + jsales.user + "%' " +
+                            //        "and SLSHSITE like '%" + jsales.site + "%' " +
+                            //        "AND SLSHSLIDI = SLSDSLIDI " +
+                            //        "AND SLSHSLNOTA = KDSCMSSLSD.SLSDSLNOTA " +
+                            //        "GROUP BY SLSHSLNOTA, SLSHSITE, SLSHCRBY, SLSHSLDATE, SLSHFLAG, SLSHSTAT")
+                            //.ToList();
+
+
+
+                            var SalesHeaders = from salesH in db.KDSCMSSLSH
+                                               join salesD in db.KDSCMSSLSD
+                                                   on salesH.SLSHSLID equals salesD.SLSDSLID
+                                               where salesH.SLSHSITE.Contains(jsales.site)
+                                                     && salesH.SLSHSLDATE == jsales.date
+                                                     && salesH.SLSHCRBY.Contains(jsales.user)
+                                                     && salesH.SLSHSLIDI == salesD.SLSDSLIDI
+                                                     && salesH.SLSHSLNOTA == salesD.SLSDSLNOTA
+                                                     && salesH.SLSHSTAT == (int)jsales.SalesType
+                                                     && salesH.SLSHFLAG == (int)jsales.SalesStatus
+                                               group salesD by
+                                                   new
+                                                   {
+                                                       salesH.SLSHSLNOTA,
+                                                       salesH.SLSHCRBY,
+                                                       salesH.SLSHSITE,
+                                                       salesH.SLSHSLDATE,
+                                                       salesH.SLSHSTAT,
+                                                       salesH.SLSHFLAG
+                                                   }
+                                into g
+                                               select new
+                                               {
+                                                   nota = g.Key.SLSHSLNOTA,
+                                                   site = g.Key.SLSHSITE,
+                                                   user = g.Key.SLSHCRBY,
+                                                   date = g.Key.SLSHSLDATE,
+                                                   status = g.Key.SLSHSTAT,
+                                                   type = g.Key.SLSHFLAG,
+                                                   totalAmount = g.Sum(salesD => salesD.SLSDSLTOTCUS),
+                                                   qty = g.Sum(salesD => salesD.SLSDSLQTY)
+                                               };
+
+                            logger.Debug("Total data retreived : " + SalesHeaders.Count());
+
+                            if (SalesHeaders.Any())
                             {
 
-                                SalesHeader = new JSalesHeader
+                                logger.Debug("found Sales Header");
+
+                                var SalesHeaderLists = new JSalesHeaderLists();
+                                var SalesHeader = new JSalesHeader();
+                                List<JSalesHeader> SalesHeaderList = new List<JSalesHeader>();
+
+                                foreach (var list in SalesHeaders)
                                 {
-                                    nota = list.nota,
-                                    site = list.site,
-                                    user = list.user,
-                                    date = list.date,
-                                    SalesStatus = (JSalesHeader.SalesStatusEnum)list.status,
-                                    SalesType = (JSalesHeader.SalesTypeEnum)list.type,
-                                    totalamount = list.totalAmount.GetValueOrDefault()
-                                };
 
-                                logger.Debug("Nota : " + list.date);
-                                logger.Debug("Sales Status : " + SalesHeader.SalesStatus);
-                                logger.Debug("Sales Type : " + SalesHeader.SalesType);
+                                    SalesHeader = new JSalesHeader
+                                    {
+                                        nota = list.nota,
+                                        site = list.site,
+                                        user = list.user,
+                                        date = list.date,
+                                        SalesStatus = (JSalesHeader.SalesStatusEnum)list.status,
+                                        SalesType = (JSalesHeader.SalesTypeEnum)list.type,
+                                        totalamount = list.totalAmount.GetValueOrDefault(),
+                                        qty = list.qty
 
-                                SalesHeaderList.Add(SalesHeader);
+                                    };
+
+                                    logger.Debug("Nota : " + list.date);
+                                    logger.Debug("Sales Status : " + SalesHeader.SalesStatus);
+                                    logger.Debug("Sales Type : " + SalesHeader.SalesType);
+
+                                    SalesHeaderList.Add(SalesHeader);
+                                }
+
+                                SalesHeaderLists.SalesHeaderLists = SalesHeaderList;
+
+
+                                return Ok(SalesHeaderLists);
                             }
-
-                            SalesHeaderLists.SalesHeaderLists = SalesHeaderList;
-
-
-                            return Ok(SalesHeaderLists);
-                        }
-                        else
-                        {
-                            return NotFound();
+                            else
+                            {
+                                return NotFound();
+                            }
                         }
                     }
+                    else
+                    {
+                        using (var ctx = new CMSContext())
+                        {
+                            logger.Debug("Nota Exist");
+
+
+
+                            //var SalesHeaders =
+                            //    ctx.Database.SqlQuery<JSalesHeaderView>(
+                            //        "select SLSHSLNOTA, SLSHSITE, SLSHCRBY, SLSHSLDATE, SLSHFLAG, SLSHSTAT, SUM(KDSCMSSLSD.SLSDSLTOTCUS) AS SLSHTOTAMT " +
+                            //        "from KDSCMSSLSH join KDSCMSSLSD " +
+                            //        "on KDSCMSSLSH.SLSHSLID = KDSCMSSLSD.SLSDSLID " +
+                            //        "where SLSHSLNOTA like '%" + jsales.nota + "%' " +
+                            //        "and SLSHSLDATE = to_date('" + jsales.date.ToString("dd-MMM-yy") + "' , 'DD-Mon-YY') " +
+                            //        "and SLSHCRBY like '%" + jsales.user + "%' " +
+                            //        "and SLSHSITE like '%" + jsales.site + "%' " +
+                            //        "AND SLSHSLIDI = SLSDSLIDI " +
+                            //        "AND SLSHSLNOTA = KDSCMSSLSD.SLSDSLNOTA " +
+                            //        "GROUP BY SLSHSLNOTA, SLSHSITE, SLSHCRBY, SLSHSLDATE, SLSHFLAG, SLSHSTAT")
+                            //.ToList();
+
+
+
+                            var SalesHeaders = from salesH in db.KDSCMSSLSH
+                                               join salesD in db.KDSCMSSLSD
+                                                   on salesH.SLSHSLID equals salesD.SLSDSLID
+                                               where salesH.SLSHSITE.Contains(jsales.site)
+                                                     && salesH.SLSHSLNOTA.Contains(jsales.nota)
+                                                     && salesH.SLSHSLDATE == jsales.date
+                                                     && salesH.SLSHCRBY.Contains(jsales.user)
+                                                     && salesH.SLSHSLIDI == salesD.SLSDSLIDI
+                                                     && salesH.SLSHSLNOTA == salesD.SLSDSLNOTA
+                                                     && salesH.SLSHSTAT == (int)jsales.SalesType
+                                                     && salesH.SLSHFLAG == (int)jsales.SalesStatus
+                                               group salesD by
+                                                   new
+                                                   {
+                                                       salesH.SLSHSLNOTA,
+                                                       salesH.SLSHCRBY,
+                                                       salesH.SLSHSITE,
+                                                       salesH.SLSHSLDATE,
+                                                       salesH.SLSHSTAT,
+                                                       salesH.SLSHFLAG
+                                                   }
+                                into g
+                                               select new
+                                               {
+                                                   nota = g.Key.SLSHSLNOTA,
+                                                   site = g.Key.SLSHSITE,
+                                                   user = g.Key.SLSHCRBY,
+                                                   date = g.Key.SLSHSLDATE,
+                                                   status = g.Key.SLSHSTAT,
+                                                   type = g.Key.SLSHFLAG,
+                                                   totalAmount = g.Sum(salesD => salesD.SLSDSLTOTCUS),
+                                                   qty = g.Sum(salesD => salesD.SLSDSLQTY)
+                                               };
+
+                            logger.Debug("Total data retreived : " + SalesHeaders.Count());
+
+                            if (SalesHeaders.Any())
+                            {
+
+                                logger.Debug("found Sales Header");
+
+                                var SalesHeaderLists = new JSalesHeaderLists();
+                                var SalesHeader = new JSalesHeader();
+                                List<JSalesHeader> SalesHeaderList = new List<JSalesHeader>();
+
+                                foreach (var list in SalesHeaders)
+                                {
+
+                                    SalesHeader = new JSalesHeader
+                                    {
+                                        nota = list.nota,
+                                        site = list.site,
+                                        user = list.user,
+                                        date = list.date,
+                                        SalesStatus = (JSalesHeader.SalesStatusEnum)list.status,
+                                        SalesType = (JSalesHeader.SalesTypeEnum)list.type,
+                                        totalamount = list.totalAmount.GetValueOrDefault(),
+                                        qty = list.qty
+
+                                    };
+
+                                    logger.Debug("Nota : " + list.date);
+                                    logger.Debug("Sales Status : " + SalesHeader.SalesStatus);
+                                    logger.Debug("Sales Type : " + SalesHeader.SalesType);
+
+                                    SalesHeaderList.Add(SalesHeader);
+                                }
+
+                                SalesHeaderLists.SalesHeaderLists = SalesHeaderList;
+
+
+                                return Ok(SalesHeaderLists);
+                            }
+                            else
+                            {
+                                return NotFound();
+                            }
+                        }
+                    }
+
+
                 }
                 else
                 {
