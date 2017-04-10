@@ -38,6 +38,7 @@ namespace cms.api.Models
         public string SLSHCRBY { get; set; }
         public string SLSHMOBY { get; set; }
         public long SLSHNMOD { get; set; }
+        public string SLSHCOMP { get; set; }
     
         public virtual KDSCMSSITE KDSCMSSITE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

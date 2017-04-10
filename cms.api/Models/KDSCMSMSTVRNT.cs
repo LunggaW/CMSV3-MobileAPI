@@ -17,7 +17,6 @@ namespace cms.api.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KDSCMSMSTVRNT()
         {
-            this.KDSCMSMSTBRCD = new HashSet<KDSCMSMSTBRCD>();
             this.KDSCMSSPRICE = new HashSet<KDSCMSSPRICE>();
         }
     
@@ -33,9 +32,8 @@ namespace cms.api.Models
         public string VRNTCRBY { get; set; }
         public string VRNTMOBY { get; set; }
         public long VRNTNMOD { get; set; }
+        public string VRNTCOMP { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KDSCMSMSTBRCD> KDSCMSMSTBRCD { get; set; }
         public virtual KDSCMSMSTITEM KDSCMSMSTITEM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KDSCMSSPRICE> KDSCMSSPRICE { get; set; }

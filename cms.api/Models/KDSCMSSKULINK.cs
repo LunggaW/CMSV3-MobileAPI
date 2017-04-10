@@ -25,9 +25,9 @@ namespace cms.api.Models
         public string SKULINKCRBY { get; set; }
         public string SKULINKMOBY { get; set; }
         public long SKULINKNMOD { get; set; }
+        public string SKULINKCOMP { get; set; }
     
-        public virtual KDSCMSMSTBRND KDSCMSMSTBRND { get; set; }
-        public virtual KDSCMSSITE KDSCMSSITE { get; set; }
         public virtual KDSCMSSKUH KDSCMSSKUH { get; set; }
+        public virtual KDSCMSMSTBRND KDSCMSMSTBRND { get; set; }
     }
 }

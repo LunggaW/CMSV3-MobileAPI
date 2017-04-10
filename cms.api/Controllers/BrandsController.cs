@@ -45,43 +45,44 @@ namespace cms.api.Controllers
             }
             
         }
-        [Route("")]
-        [HttpPost]
-        public IEnumerable<BrandViewModel> PostSiteSkus([FromBody]JObject data)
-        {
-            try
-            {
-                string userid = data["userid"].ToString();
-                IEnumerable<BrandViewModel> brands = from allbrand in (from brand in db.KDSCMSMSTBRND
-                                                                       from skulink in db.KDSCMSSKULINK
-                                                                       from proflink in db.KDSCMSPROFSITELINK
-                                                                       from user in db.KDSCMSUSER
-                                                                       where
-                                                                       brand.BRNDBRNDID == skulink.SKULINKBRNDID &&
-                                                                       skulink.SKULINKSITEID == proflink.PRSTSITE &&
-                                                                       proflink.PRSTSTPROF == user.USERSTPROF &&
-                                                                       user.USERUSID == userid &&
-                                                                       DbFunctions.TruncateTime(skulink.SKULINKSDATE) <= DbFunctions.TruncateTime(DateTime.Today) &&
-                                                                       DbFunctions.TruncateTime(skulink.SKULINKEDATE) >= DbFunctions.TruncateTime(DateTime.Today) &&
-                                                                       DbFunctions.TruncateTime(proflink.PRSTSDAT) <= DbFunctions.TruncateTime(DateTime.Today) &&
-                                                                       DbFunctions.TruncateTime(proflink.PRSTEDAT) >= DbFunctions.TruncateTime(DateTime.Today)
-                                                                       select new { brand.BRNDBRNDID, brand.BRNDDESC }
-                                                    ).Distinct()
-                                                     select new BrandViewModel
-                                                     {
-                                                         brandid = allbrand.BRNDBRNDID,
-                                                         branddesc = allbrand.BRNDDESC
-                                                     }
-                ;
-                return brands;
-            }
-            catch (Exception ex)
-            {
-                logger.Error("Error Message" + ex.Message);
-                logger.Error("Inner Exception" + ex.InnerException);
-                throw;
-            }
+
+        //[Route("")]
+        //[HttpPost]
+        //public IEnumerable<BrandViewModel> PostSiteSkus([FromBody]JObject data)
+        //{
+        //    try
+        //    {
+        //        string userid = data["userid"].ToString();
+        //        IEnumerable<BrandViewModel> brands = from allbrand in (from brand in db.KDSCMSMSTBRND
+        //                                                               from skulink in db.KDSCMSSKULINK
+        //                                                               from proflink in db.KDSCMSPROFSITELINK
+        //                                                               from user in db.KDSCMSUSER
+        //                                                               where
+        //                                                               brand.BRNDBRNDID == skulink.SKULINKBRNDID &&
+        //                                                               skulink.SKULINKSITEID == proflink.PRSTSITE &&
+        //                                                               proflink.PRSTSTPROF == user.USERSTPROF &&
+        //                                                               user.USERUSID == userid &&
+        //                                                               DbFunctions.TruncateTime(skulink.SKULINKSDATE) <= DbFunctions.TruncateTime(DateTime.Today) &&
+        //                                                               DbFunctions.TruncateTime(skulink.SKULINKEDATE) >= DbFunctions.TruncateTime(DateTime.Today) &&
+        //                                                               DbFunctions.TruncateTime(proflink.PRSTSDAT) <= DbFunctions.TruncateTime(DateTime.Today) &&
+        //                                                               DbFunctions.TruncateTime(proflink.PRSTEDAT) >= DbFunctions.TruncateTime(DateTime.Today)
+        //                                                               select new { brand.BRNDBRNDID, brand.BRNDDESC }
+        //                                            ).Distinct()
+        //                                             select new BrandViewModel
+        //                                             {
+        //                                                 brandid = allbrand.BRNDBRNDID,
+        //                                                 branddesc = allbrand.BRNDDESC
+        //                                             }
+        //        ;
+        //        return brands;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logger.Error("Error Message" + ex.Message);
+        //        logger.Error("Inner Exception" + ex.InnerException);
+        //        throw;
+        //    }
             
-        }
+        //}
     }
 }

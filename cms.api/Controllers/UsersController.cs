@@ -65,6 +65,8 @@ namespace cms.api.Controllers
             try
             {
                 string userid = data["userid"].ToString();
+                //string company = data["company"].ToString();
+
                 DateTime enddate = DateTime.Today.AddDays(-7);
 
                 if (!string.IsNullOrWhiteSpace(userid))
@@ -74,21 +76,28 @@ namespace cms.api.Controllers
                     {
                         JSiteProfile siteprof = new JSiteProfile();
                         List<JProfSiteLink> jprofsitelinks = new List<JProfSiteLink>();
-                        KDSCMSSITEPROF KDSCMSSITEPROF = KDSCMSUSER.KDSCMSSITEPROF;
-                        siteprof.siteprofid = KDSCMSSITEPROF.STPRSTPROF;
-                        siteprof.siteprofdesc = KDSCMSSITEPROF.STPRSTDESC;
 
-                        IEnumerable<KDSCMSPROFSITELINK> profsitelinks = db.KDSCMSPROFSITELINK.Where(d =>
-                                    d.PRSTSTPROF == KDSCMSSITEPROF.STPRSTPROF &&
-                                    DbFunctions.TruncateTime(d.PRSTSDAT) <= DbFunctions.TruncateTime(DateTime.Today) &&
-                                    DbFunctions.TruncateTime(d.PRSTEDAT) >= DbFunctions.TruncateTime(DateTime.Today)
+                        //KDSCMSSITEPROF KDSCMSSITEPROF = KDSCMSUSER.KDSCMSSITEPROF;
+                        //siteprof.siteprofid = KDSCMSSITEPROF.STPRSTPROF;
+                        //siteprof.siteprofdesc = KDSCMSSITEPROF.STPRSTDESC;
+
+                        IEnumerable<KDSCMSSITELINK> sitelinks = db.KDSCMSSITELINK.Where(d =>
+                                    d.STLNUSER == KDSCMSUSER.USERUSID &&
+                                    DbFunctions.TruncateTime(d.STLNSDAT) <= DbFunctions.TruncateTime(DateTime.Today) &&
+                                    DbFunctions.TruncateTime(d.STLNEDAT) >= DbFunctions.TruncateTime(DateTime.Today) &&
+                                    d.STLNCOMP == KDSCMSUSER.USERCOMP
                         );
-                        foreach (KDSCMSPROFSITELINK profsitelink in profsitelinks)
+
+                        foreach (KDSCMSSITELINK sitelink in sitelinks)
                         {
-                            KDSCMSSITE KDSCMSSITE = db.KDSCMSSITE.FirstOrDefault(d => d.SITESITE == profsitelink.PRSTSITE && d.SITESITEFLAG == 1 && d.SITESITESTATUS == 1);
+                            logger.Debug("Site Link Site : " + sitelink.STLNSITE);
+                            KDSCMSSITE KDSCMSSITE = db.KDSCMSSITE.FirstOrDefault(d => d.SITESITE == sitelink.STLNSITE && d.SITESITEFLAG == 1 && d.SITESITESTATUS == 1 && d.SITESITECOMP == KDSCMSUSER.USERCOMP);
                             if (KDSCMSSITE != null)
                             {
-                                JProfSiteLink jprofsitelink = new JProfSiteLink();
+                               logger.Debug("Site : "+ KDSCMSSITE.SITESITE);
+                                logger.Debug("Site Link Site : " + sitelink.STLNSITE);
+
+                                JProfSiteLink jsitelink = new JProfSiteLink();
                                 JSite jsite = new JSite();
                                 jsite.siteid = KDSCMSSITE.SITESITE;
                                 jsite.sitename = KDSCMSSITE.SITESITENAME;
@@ -96,18 +105,19 @@ namespace cms.api.Controllers
                                 jsite.siteflag = Convert.ToInt16(KDSCMSSITE.SITESITEFLAG);
                                 jsite.sitestatus = Convert.ToInt16(KDSCMSSITE.SITESITESTATUS);
 
-                                jprofsitelink.siteid = profsitelink.PRSTSITE;
-                                jprofsitelink.siteprofid = profsitelink.PRSTSTPROF;
-                                jprofsitelink.linksdate = profsitelink.PRSTSDAT;
-                                jprofsitelink.linkedate = profsitelink.PRSTEDAT;
-                                jprofsitelink.Site = jsite;
+                                jsitelink.siteid = sitelink.STLNSITE;
+                                jsitelink.siteprofid = sitelink.STLNCOMP;
+                                jsitelink.linksdate = sitelink.STLNSDAT;
+                                jsitelink.linkedate = sitelink.STLNEDAT;
+                                jsitelink.Site = jsite;
 
-                                jprofsitelinks.Add(jprofsitelink);
+                                jprofsitelinks.Add(jsitelink);
 
                                 IEnumerable<KDSCMSSKULINK> skulinks = db.KDSCMSSKULINK.Where(d =>
                                     d.SKULINKSITEID == KDSCMSSITE.SITESITE &&
                                     DbFunctions.TruncateTime(d.SKULINKSDATE) <= DbFunctions.TruncateTime(DateTime.Today) &&
-                                    DbFunctions.TruncateTime(d.SKULINKEDATE) >= DbFunctions.TruncateTime(enddate)
+                                    DbFunctions.TruncateTime(d.SKULINKEDATE) >= DbFunctions.TruncateTime(enddate) &&
+                                    d.SKULINKCOMP == KDSCMSUSER.USERCOMP
                                 );
 
 
@@ -118,7 +128,8 @@ namespace cms.api.Controllers
                                     KDSCMSSKUH skuh = db.KDSCMSSKUH.FirstOrDefault(d =>
                                         d.SKUHSKUID == skulink.SKULINKSKUID &&
                                         DbFunctions.TruncateTime(d.SKUHSDAT) <= DbFunctions.TruncateTime(DateTime.Today) &&
-                                        DbFunctions.TruncateTime(d.SKUHEDAT) >= DbFunctions.TruncateTime(skulink.SKULINKEDATE)
+                                        DbFunctions.TruncateTime(d.SKUHEDAT) >= DbFunctions.TruncateTime(skulink.SKULINKEDATE) &&
+                                        d.SKUHCOMP == KDSCMSUSER.USERCOMP
                                     );
 
                                     KDSCMSMSTBRND brand = skulink.KDSCMSMSTBRND;

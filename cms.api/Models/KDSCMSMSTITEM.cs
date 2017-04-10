@@ -17,7 +17,6 @@ namespace cms.api.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KDSCMSMSTITEM()
         {
-            this.KDSCMSMSTBRCD = new HashSet<KDSCMSMSTBRCD>();
             this.KDSCMSMSTVRNT = new HashSet<KDSCMSMSTVRNT>();
         }
     
@@ -33,11 +32,10 @@ namespace cms.api.Models
         public string ITEMCRBY { get; set; }
         public string ITEMMOBY { get; set; }
         public long ITEMNMOD { get; set; }
+        public string ITEMCOMP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KDSCMSMSTBRCD> KDSCMSMSTBRCD { get; set; }
-        public virtual KDSCMSMSTBRND KDSCMSMSTBRND { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KDSCMSMSTVRNT> KDSCMSMSTVRNT { get; set; }
+        public virtual KDSCMSMSTBRND KDSCMSMSTBRND { get; set; }
     }
 }

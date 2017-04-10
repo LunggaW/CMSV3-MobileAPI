@@ -198,6 +198,7 @@ namespace cms.api.Controllers
             {
                 string barcode = data["barcode"].ToString();
                 string site = data["site"].ToString();
+                string userid = data["userid"].ToString();
 
                 logger.Debug("barcode : " + barcode);
                 logger.Debug("site : " + site);
@@ -207,11 +208,17 @@ namespace cms.api.Controllers
                     JSkuList list = new JSkuList();
                     List<JSkuList> jskulists = new List<JSkuList>();
 
+                    KDSCMSUSER user = db.KDSCMSUSER.Find(userid);
+
+                    logger.Debug("Company : "+user.USERCOMP);
+
                     using (var ctx = new CMSContext())
                     {
                         var lists =
                             ctx.KDSCMSSKUH.SqlQuery("select * " +
-                                                    "from KDSCMSSKUH  where SKUHEDAT >= CURRENT_DATE " +
+                                                    "from KDSCMSSKUH  " +
+                                                    "where SKUHEDAT >= CURRENT_DATE " +
+                                                    "AND SKUHCOMP = '"+user.USERCOMP+"' " +
                                                     "AND SKUHSKUID IN " +
                                                     "(select distinct SKULINKSKUID " +
                                                     "from KDSCMSSKULINK, KDSCMSMSTITEM " +
@@ -222,8 +229,14 @@ namespace cms.api.Controllers
                                                     "    WHERE  SASSITEMID = BRCDITEMID " +
                                                     "     AND SASSVRNT = BRCDVRNTID " +
                                                     "     AND BRCDBRCDID = '"+barcode+"' " +
-                                                    "     AND SASSSITEID = KDSCMSSKULINK.SKULINKSITEID))").ToList<KDSCMSSKUH>();
+                                                    "     AND SASSSITEID = KDSCMSSKULINK.SKULINKSITEID " +
+                                                    "     AND SASSCOMP = BRCDCOMP " +
+                                                    "     AND SASSCOMP = '"+ user.USERCOMP +"' ) " +
+                                                    "AND SKULINKCOMP = ITEMCOMP " +
+                                                    "AND SKULINKCOMP = '"+user.USERCOMP+"' ) ").ToList<KDSCMSSKUH>();
                         logger.Debug("masuk");
+                        
+
 
                         foreach (KDSCMSSKUH skuLists in lists)
                         {

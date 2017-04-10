@@ -27,7 +27,8 @@ namespace cms.api.Providers
             bool isValidUser = false;
 
             logger.Debug("GrantResourceOwnerCredentials Username" + context.UserName);
-            logger.Debug("GrantResourceOwnerCredentials Username" + context.UserName);
+            logger.Debug("GrantResourceOwnerCredentials Password" + context.Password);
+
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 

@@ -17,8 +17,8 @@ namespace cms.api.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KDSCMSMSTBRND()
         {
-            this.KDSCMSSKULINK = new HashSet<KDSCMSSKULINK>();
             this.KDSCMSMSTITEM = new HashSet<KDSCMSMSTITEM>();
+            this.KDSCMSSKULINK = new HashSet<KDSCMSSKULINK>();
         }
     
         public string BRNDBRNDID { get; set; }
@@ -29,10 +29,11 @@ namespace cms.api.Models
         public string BRNDCRBY { get; set; }
         public string BRNDMOBY { get; set; }
         public long BRNDNMOD { get; set; }
+        public string BRNDCOMP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KDSCMSSKULINK> KDSCMSSKULINK { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KDSCMSMSTITEM> KDSCMSMSTITEM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KDSCMSSKULINK> KDSCMSSKULINK { get; set; }
     }
 }

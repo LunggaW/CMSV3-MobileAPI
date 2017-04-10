@@ -53,6 +53,7 @@ namespace cms.api.Models
         public string SLSDMOBY { get; set; }
         public long SLSDNMOD { get; set; }
         public Nullable<decimal> SLSDSLTOTCUS { get; set; }
+        public string SLSDCOMP { get; set; }
     
         public virtual KDSCMSSLSH KDSCMSSLSH { get; set; }
     }

@@ -14,6 +14,12 @@ namespace cms.api.Models
     
     public partial class KDSCMSUSER
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public KDSCMSUSER()
+        {
+            this.KDSCMSSITELINK = new HashSet<KDSCMSSITELINK>();
+        }
+    
         public string USERUSID { get; set; }
         public string USERUSNM { get; set; }
         public string USERPASW { get; set; }
@@ -33,7 +39,9 @@ namespace cms.api.Models
         public string USERMOBY { get; set; }
         public long USERNMOD { get; set; }
         public string USERTOKEN { get; set; }
+        public string USERCOMP { get; set; }
     
-        public virtual KDSCMSSITEPROF KDSCMSSITEPROF { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KDSCMSSITELINK> KDSCMSSITELINK { get; set; }
     }
 }

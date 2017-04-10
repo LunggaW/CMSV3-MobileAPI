@@ -27,8 +27,9 @@ namespace cms.api.Models
         public string SPRCCRBY { get; set; }
         public string SPRCMOBY { get; set; }
         public long SPRCNMOD { get; set; }
+        public string SPRCCOMP { get; set; }
     
-        public virtual KDSCMSSITE KDSCMSSITE { get; set; }
         public virtual KDSCMSMSTVRNT KDSCMSMSTVRNT { get; set; }
+        public virtual KDSCMSSITE KDSCMSSITE { get; set; }
     }
 }

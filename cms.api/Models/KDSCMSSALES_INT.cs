@@ -32,5 +32,6 @@ namespace cms.api.Models
         public Nullable<int> CMSDISCOUNT { get; set; }
         public Nullable<decimal> CMSFINALPRICE { get; set; }
         public Nullable<decimal> CMSNORMALPRICE { get; set; }
+        public string CMSCOMP { get; set; }
     }
 }

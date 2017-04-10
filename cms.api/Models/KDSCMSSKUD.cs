@@ -29,6 +29,7 @@ namespace cms.api.Models
         public string SKUDCRBY { get; set; }
         public string SKUDMOBY { get; set; }
         public long SKUDNMOD { get; set; }
+        public string SKUDCOMP { get; set; }
     
         public virtual KDSCMSSKUH KDSCMSSKUH { get; set; }
     }

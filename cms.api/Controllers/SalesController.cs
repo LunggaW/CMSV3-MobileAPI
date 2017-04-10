@@ -16,6 +16,7 @@ using cms.api.ViewModels;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using NLog;
+using NLog.Fluent;
 
 namespace cms.api.Controllers
 {
@@ -39,6 +40,7 @@ namespace cms.api.Controllers
                 {
                     try
                     {
+                        logger.Debug("Processing Sales");
                         List<JSales> jsales = JsonConvert.DeserializeObject<List<JSales>>(salesstr);
                         int countjsales = jsales.Count();
                         int counter = 0;
@@ -52,6 +54,9 @@ namespace cms.api.Controllers
 
                                 KDSCMSSALES_INT intsales = new KDSCMSSALES_INT();
 
+                                
+
+                                
 
                                 //update GAGAN
                                 intsales.CMSSALNOTA = "MBL";
@@ -71,22 +76,24 @@ namespace cms.api.Controllers
                                 intsales.CMSSALSEQ = sequence;
                                 intsales.CMSSALTYPE = saldata.transtype;
                                 intsales.CMSSALTRNDATE = saldata.transdate;
+                                intsales.CMSCOMP = user.USERCOMP;
 
                                 //Update GAGAN
                                 intsales.CMSDISCOUNT = saldata.transdiscount;
                                 intsales.CMSFINALPRICE = saldata.transfinalprice;
                                 intsales.CMSNORMALPRICE = saldata.transprice;
 
-
+                                logger.Debug("Insert Data to KDSCMSSALES_INT");
                                 db.KDSCMSSALES_INT.Add(intsales);
-
+                                logger.Debug("Finish Insert Data");
                                 counter++;
                             }
 
                             if (counter == countjsales)
                             {
                                 db.SaveChanges();
-                                db.Database.ExecuteSqlCommand("BEGIN PKKDSCMSPROSALES.MOVESALESDATA(); END;");
+                                logger.Debug("Run PKKDSCMSPROSALES.MOVESALESDATA SP");
+                                db.Database.ExecuteSqlCommand("BEGIN PKKDSCMSPROSALES.MOVESALESDATA('" + user.USERCOMP + "'); END;");
                                 db.SaveChanges();
                                 Dictionary<string, int> total = new Dictionary<string, int>();
                                 total.Add("total", counter);
@@ -119,6 +126,7 @@ namespace cms.api.Controllers
                     }
                     catch (Exception ex)
                     {
+
                         logger.Error("Error Message" + ex.Message);
                         logger.Error("Inner Exception" + ex.InnerException);
                         return BadRequest();
@@ -179,6 +187,7 @@ namespace cms.api.Controllers
                                 intComplexSales.CMSSALSEQ = sequence;
                                 intComplexSales.CMSSALTRNDATE = saldata.transdate;
                                 intComplexSales.CMSSALCOMM = saldata.transcomm;
+                                intComplexSales.CMSSALCOMP = user.USERCOMP;
 
                                 logger.Trace("Nota : " + saldata.transnota);
                                 logger.Trace("Barcode : " + saldata.transbrcd);
@@ -203,7 +212,7 @@ namespace cms.api.Controllers
                             {
                                 db.SaveChanges();
                                 //db.Database.ExecuteSqlCommand("BEGIN PKKDSCMSPROSALES.MOVESALESDATA(); END;");
-                                db.Database.ExecuteSqlCommand("BEGIN PKKDSCMSSLSD.MOBILE_PROCESS_COMPLEX(" + sequence + "); END;");
+                                db.Database.ExecuteSqlCommand("BEGIN PKKDSCMSSLSD.MOBILE_PROCESS_COMPLEX(" + sequence + ", '"+user.USERCOMP+"'); END;");
 
                                 db.SaveChanges();
                                 Dictionary<string, int> total = new Dictionary<string, int>();
@@ -275,6 +284,8 @@ namespace cms.api.Controllers
 
                 if (!string.IsNullOrWhiteSpace(jsales.nota))
                 {
+                    KDSCMSUSER user = db.KDSCMSUSER.Find(jsales.user);
+
                     using (var ctx = new CMSContext())
                     {
 
@@ -284,6 +295,7 @@ namespace cms.api.Controllers
                                                               && salesH.SLSHSLNOTA == jsales.nota
                                                               && salesH.SLSHSLDATE == jsales.date
                                                               && salesH.SLSHCRBY == jsales.user
+                                                              && salesH.SLSHCOMP == user.USERCOMP
                                                               select salesH;
 
                         if (SalesHeader.Any())
@@ -301,6 +313,7 @@ namespace cms.api.Controllers
                                                                   && salesD.SLSDBRCD == jsales.barcode
                                                                   && salesD.SLSDSLID == SalesHeader.FirstOrDefault().SLSHSLID
                                                                   && salesD.SLSDSLIDI == SalesHeader.FirstOrDefault().SLSHSLIDI
+                                                                  && salesD.SLSDCOMP == user.USERCOMP
                                                                   select salesD;
                             if (SalesDetail.Any())
                             {
@@ -362,6 +375,7 @@ namespace cms.api.Controllers
 
                 if (!string.IsNullOrWhiteSpace(jsales.nota))
                 {
+                    KDSCMSUSER user = db.KDSCMSUSER.Find(jsales.user);
                     using (var ctx = new CMSContext())
                     {
                         logger.Debug("Nota Exist");
@@ -393,6 +407,7 @@ namespace cms.api.Controllers
                                                  && salesH.SLSHCRBY.Contains(jsales.user)
                                                  && salesH.SLSHSLIDI == salesD.SLSDSLIDI
                                                  && salesH.SLSHSLNOTA == salesD.SLSDSLNOTA
+                                                 && salesH.SLSHCOMP == user.USERCOMP
                                            group salesD by
                                                new
                                                {
@@ -492,7 +507,7 @@ namespace cms.api.Controllers
 
                 if (!string.IsNullOrWhiteSpace(jsales.nota))
                 {
-
+                    KDSCMSUSER user = db.KDSCMSUSER.Find(jsales.user);
                     if (jsales.nota == "ALL")
                     {
                         using (var ctx = new CMSContext())
@@ -527,6 +542,7 @@ namespace cms.api.Controllers
                                                      && salesH.SLSHSLNOTA == salesD.SLSDSLNOTA
                                                      && salesH.SLSHSTAT == (int)jsales.SalesType
                                                      && salesH.SLSHFLAG == (int)jsales.SalesStatus
+                                                     && salesH.SLSHCOMP == user.USERCOMP
                                                group salesD by
                                                    new
                                                    {
@@ -734,6 +750,7 @@ namespace cms.api.Controllers
 
                 if (!string.IsNullOrWhiteSpace(jsales.nota))
                 {
+                    KDSCMSUSER user = db.KDSCMSUSER.Find(jsales.user);
                     using (var ctx = new CMSContext())
                     {
                         logger.Debug("Nota Exist");
@@ -782,7 +799,8 @@ namespace cms.api.Controllers
                                 "AND SALESD.SLSDSLNOTA LIKE '%" + jsales.nota + "%' " +
                                 "AND to_date(SALESD.SLSDSLDATE, 'DD-Mon-YY') = to_date('" + jsales.date.ToString("dd-MMM-yy") +
                                 "', 'DD-Mon-YY') " +
-                                "AND SALESD.SLSDCRBY LIKE '%" + jsales.user + "%'")
+                                "AND SALESD.SLSDCRBY LIKE '%" + jsales.user + "%' " +
+                                "AND SALESD.SLSDCOMP = '"+user.USERCOMP+"' ")
                                 .ToList();
 
 

@@ -25,23 +25,22 @@ namespace cms.api.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<KDSCMSMSTBRND> KDSCMSMSTBRND { get; set; }
-        public virtual DbSet<KDSCMSPROFSITELINK> KDSCMSPROFSITELINK { get; set; }
+        public virtual DbSet<KDSCMSCOMPANY> KDSCMSCOMPANY { get; set; }
+        public virtual DbSet<KDSCMSMSTITEM> KDSCMSMSTITEM { get; set; }
+        public virtual DbSet<KDSCMSMSTVRNT> KDSCMSMSTVRNT { get; set; }
+        public virtual DbSet<KDSCMSPARDTABLE> KDSCMSPARDTABLE { get; set; }
+        public virtual DbSet<KDSCMSSALES_INT> KDSCMSSALES_INT { get; set; }
+        public virtual DbSet<KDSCMSSASS> KDSCMSSASS { get; set; }
         public virtual DbSet<KDSCMSSITE> KDSCMSSITE { get; set; }
-        public virtual DbSet<KDSCMSSITEPROF> KDSCMSSITEPROF { get; set; }
         public virtual DbSet<KDSCMSSKUD> KDSCMSSKUD { get; set; }
         public virtual DbSet<KDSCMSSKUH> KDSCMSSKUH { get; set; }
         public virtual DbSet<KDSCMSSKULINK> KDSCMSSKULINK { get; set; }
-        public virtual DbSet<KDSCMSUSER> KDSCMSUSER { get; set; }
-        public virtual DbSet<KDSCMSPARDTABLE> KDSCMSPARDTABLE { get; set; }
-        public virtual DbSet<KDSCMSSALES_INT> KDSCMSSALES_INT { get; set; }
-        public virtual DbSet<KDSCMSMSTBRCD> KDSCMSMSTBRCD { get; set; }
-        public virtual DbSet<KDSCMSSASS> KDSCMSSASS { get; set; }
-        public virtual DbSet<KDSCMSSPRICE> KDSCMSSPRICE { get; set; }
-        public virtual DbSet<KDSCMSMSTITEM> KDSCMSMSTITEM { get; set; }
-        public virtual DbSet<KDSCMSSLSH> KDSCMSSLSH { get; set; }
-        public virtual DbSet<KDSCMSSLSD> KDSCMSSLSD { get; set; }
         public virtual DbSet<KDSCMSSLSCOM_INT> KDSCMSSLSCOM_INT { get; set; }
-        public virtual DbSet<KDSCMSMSTVRNT> KDSCMSMSTVRNT { get; set; }
+        public virtual DbSet<KDSCMSSLSD> KDSCMSSLSD { get; set; }
+        public virtual DbSet<KDSCMSSLSH> KDSCMSSLSH { get; set; }
+        public virtual DbSet<KDSCMSSPRICE> KDSCMSSPRICE { get; set; }
+        public virtual DbSet<KDSCMSMSTBRND> KDSCMSMSTBRND { get; set; }
+        public virtual DbSet<KDSCMSSITELINK> KDSCMSSITELINK { get; set; }
+        public virtual DbSet<KDSCMSUSER> KDSCMSUSER { get; set; }
     }
 }

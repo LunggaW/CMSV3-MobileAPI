@@ -24,5 +24,6 @@ namespace cms.api.Models
         public string SASSCRBY { get; set; }
         public string SASSMOBY { get; set; }
         public Nullable<long> SASSNMOD { get; set; }
+        public string SASSCOMP { get; set; }
     }
 }

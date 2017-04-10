@@ -35,12 +35,14 @@ namespace cms.api.Controllers
             {
                 string barcode = data["barcode"].ToString();
                 string site = data["site"].ToString();
+                string userid = data["userid"].ToString();
 
                 logger.Debug("barcode : " + barcode);
                 logger.Debug("site : " + site);
 
                 if (!string.IsNullOrWhiteSpace(barcode) && !string.IsNullOrWhiteSpace(site))
                 {
+                    KDSCMSUSER user = db.KDSCMSUSER.Find(userid);
                     using (var ctx = new CMSContext())
                     {
                         var Price =
@@ -53,7 +55,8 @@ namespace cms.api.Controllers
                                                       " AND SASSSITEID = '"+site+"' " +
                                                       " AND SPRCITEMID = BRCDITEMID " +
                                                       " AND SPRCVRNTID = BRCDVRNTID " +
-                                                      " AND SPRCSITE = SASSSITEID").ToList();
+                                                      " AND SPRCSITE = SASSSITEID " +
+                                                      " AND SPRCCOMP = '"+ user .USERCOMP+ "' ").ToList();
 
                         if (Price != null)
                         {

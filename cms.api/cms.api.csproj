@@ -258,7 +258,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CMSModels.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\KDSCMSMSTBRCD.cs">
+    <Compile Include="Models\KDSCMSCOMPANY.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KDSCMSMSTBRND.cs">
@@ -273,9 +273,6 @@
     <Compile Include="Models\KDSCMSPARDTABLE.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KDSCMSPROFSITELINK.cs">
-      <DependentUpon>CMSModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\KDSCMSSALES_INT.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
@@ -285,7 +282,7 @@
     <Compile Include="Models\KDSCMSSITE.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KDSCMSSITEPROF.cs">
+    <Compile Include="Models\KDSCMSSITELINK.cs">
       <DependentUpon>CMSModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KDSCMSSKUD.cs">

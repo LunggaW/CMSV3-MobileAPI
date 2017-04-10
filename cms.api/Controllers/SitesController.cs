@@ -49,56 +49,56 @@ namespace cms.api.Controllers
             
         }
 
-        [Route("profile/{id}")]
-        [HttpGet]
-        public IEnumerable<SiteViewModel> GetProfSites(string id)
-        {
-            IEnumerable<SiteViewModel> sites = from site in db.KDSCMSSITE
-                                               join siteprof in db.KDSCMSPROFSITELINK on site.SITESITE equals siteprof.PRSTSITE
-                                               where siteprof.PRSTSTPROF == id &&
-                                               site.SITESITEFLAG == 1 &&
-                                               site.SITESITESTATUS == 1 &&
-                                               DbFunctions.TruncateTime(siteprof.PRSTSDAT) <= DbFunctions.TruncateTime(DateTime.Today) &&
-                                               DbFunctions.TruncateTime(siteprof.PRSTEDAT) >= DbFunctions.TruncateTime(DateTime.Today)
-                                               select new SiteViewModel
-                                                {
-                                                   siteid = site.SITESITE,
-                                                   siteclass = site.SITESCLAS,
-                                                   sitename = site.SITESITENAME,
-                                                   siteflag = site.SITESITEFLAG,
-                                                   sitestatus = site.SITESITESTATUS
-                                                }
-            ;
-            return sites;
-        }
+        //[Route("profile/{id}")]
+        //[HttpGet]
+        //public IEnumerable<SiteViewModel> GetProfSites(string id)
+        //{
+        //    IEnumerable<SiteViewModel> sites = from site in db.KDSCMSSITE
+        //                                       join siteprof in db.KDSCMSPROFSITELINK on site.SITESITE equals siteprof.PRSTSITE
+        //                                       where siteprof.PRSTSTPROF == id &&
+        //                                       site.SITESITEFLAG == 1 &&
+        //                                       site.SITESITESTATUS == 1 &&
+        //                                       DbFunctions.TruncateTime(siteprof.PRSTSDAT) <= DbFunctions.TruncateTime(DateTime.Today) &&
+        //                                       DbFunctions.TruncateTime(siteprof.PRSTEDAT) >= DbFunctions.TruncateTime(DateTime.Today)
+        //                                       select new SiteViewModel
+        //                                        {
+        //                                           siteid = site.SITESITE,
+        //                                           siteclass = site.SITESCLAS,
+        //                                           sitename = site.SITESITENAME,
+        //                                           siteflag = site.SITESITEFLAG,
+        //                                           sitestatus = site.SITESITESTATUS
+        //                                        }
+        //    ;
+        //    return sites;
+        //}
 
-        [Route("user/{id}")]
-        [HttpGet]
-        public IEnumerable<SiteViewModel> GetUserSites(string id)
-        {
-            IEnumerable<SiteViewModel> sites = from site in db.KDSCMSSITE
-                                                from siteprof in db.KDSCMSPROFSITELINK
-                                                from user in db.KDSCMSUSER
-                                                where user.USERUSID == id &&
-                                                site.SITESITE == siteprof.PRSTSITE &&
-                                                siteprof.PRSTSTPROF == user.USERSTPROF &&
-                                                site.SITESITESTATUS == 1 &&
-                                                site.SITESCLAS == 1 &&
-                                                site.SITESITEFLAG == 1 &&
-                                                DbFunctions.TruncateTime(siteprof.PRSTSDAT) <= DbFunctions.TruncateTime(DateTime.Today) &&
-                                                DbFunctions.TruncateTime(siteprof.PRSTEDAT) >= DbFunctions.TruncateTime(DateTime.Today) &&
-                                                user.USERSTAT == 1
-                                                select new SiteViewModel
-                                                {
-                                                   siteid = site.SITESITE,
-                                                   siteclass = site.SITESCLAS,
-                                                   sitename = site.SITESITENAME,
-                                                   siteflag = site.SITESITEFLAG,
-                                                   sitestatus = site.SITESITESTATUS
-                                                }
-            ;
-            return sites;
-        }
+        //[Route("user/{id}")]
+        //[HttpGet]
+        //public IEnumerable<SiteViewModel> GetUserSites(string id)
+        //{
+        //    IEnumerable<SiteViewModel> sites = from site in db.KDSCMSSITE
+        //                                        from siteprof in db.KDSCMSPROFSITELINK
+        //                                        from user in db.KDSCMSUSER
+        //                                        where user.USERUSID == id &&
+        //                                        site.SITESITE == siteprof.PRSTSITE &&
+        //                                        siteprof.PRSTSTPROF == user.USERSTPROF &&
+        //                                        site.SITESITESTATUS == 1 &&
+        //                                        site.SITESCLAS == 1 &&
+        //                                        site.SITESITEFLAG == 1 &&
+        //                                        DbFunctions.TruncateTime(siteprof.PRSTSDAT) <= DbFunctions.TruncateTime(DateTime.Today) &&
+        //                                        DbFunctions.TruncateTime(siteprof.PRSTEDAT) >= DbFunctions.TruncateTime(DateTime.Today) &&
+        //                                        user.USERSTAT == 1
+        //                                        select new SiteViewModel
+        //                                        {
+        //                                           siteid = site.SITESITE,
+        //                                           siteclass = site.SITESCLAS,
+        //                                           sitename = site.SITESITENAME,
+        //                                           siteflag = site.SITESITEFLAG,
+        //                                           sitestatus = site.SITESITESTATUS
+        //                                        }
+        //    ;
+        //    return sites;
+        //}
 
         [Route("{id}")]
         [HttpGet]

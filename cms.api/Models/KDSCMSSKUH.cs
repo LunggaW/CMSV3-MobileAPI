@@ -33,6 +33,7 @@ namespace cms.api.Models
         public string SKUHCRBY { get; set; }
         public string SKUHMOBY { get; set; }
         public long SKUHNMOD { get; set; }
+        public string SKUHCOMP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KDSCMSSKUD> KDSCMSSKUD { get; set; }

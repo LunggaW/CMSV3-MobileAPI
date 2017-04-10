@@ -17,10 +17,8 @@ namespace cms.api.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KDSCMSSITE()
         {
-            this.KDSCMSPROFSITELINK = new HashSet<KDSCMSPROFSITELINK>();
-            this.KDSCMSSKULINK = new HashSet<KDSCMSSKULINK>();
-            this.KDSCMSSPRICE = new HashSet<KDSCMSSPRICE>();
             this.KDSCMSSLSH = new HashSet<KDSCMSSLSH>();
+            this.KDSCMSSPRICE = new HashSet<KDSCMSSPRICE>();
         }
     
         public string SITESITE { get; set; }
@@ -34,14 +32,11 @@ namespace cms.api.Models
         public long SITESITENMOD { get; set; }
         public decimal SITESITEFLAG { get; set; }
         public decimal SITESITESTATUS { get; set; }
+        public string SITESITECOMP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KDSCMSPROFSITELINK> KDSCMSPROFSITELINK { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KDSCMSSKULINK> KDSCMSSKULINK { get; set; }
+        public virtual ICollection<KDSCMSSLSH> KDSCMSSLSH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KDSCMSSPRICE> KDSCMSSPRICE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KDSCMSSLSH> KDSCMSSLSH { get; set; }
     }
 }

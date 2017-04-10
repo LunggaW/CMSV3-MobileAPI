@@ -27,5 +27,6 @@ namespace cms.api.Models
         public Nullable<short> CMSSALSTAT { get; set; }
         public System.DateTime CMSSALCDAT { get; set; }
         public string CMSSALCRBY { get; set; }
+        public string CMSSALCOMP { get; set; }
     }
 }
